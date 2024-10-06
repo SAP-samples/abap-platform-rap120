@@ -1,6 +1,4 @@
-<!--- Register repository https://api.reuse.software/register, then add REUSE badge:
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/abap-platform-rap120)](https://api.reuse.software/info/github.com/SAP-samples/abap-platform-rap120)
--->
 
 # RAP120 - Build SAP Fiori Apps with ABAP Cloud powered by Joule's ABAP developer capabilities
 
