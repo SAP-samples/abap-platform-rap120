@@ -1,7 +1,7 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: abap-platform-rap120
 Upstream-Contact: ospo@sap.com
-Source: <https://github.com/sap-samples/YOUR-REPO-NAME>
+Source: <https://github.com/sap-samples/abap-platform-rap120>
 Disclaimer: The code in this project may include calls to APIs ("API Calls") of
  SAP or third-party products or services developed outside of this project
  ("External Products").
