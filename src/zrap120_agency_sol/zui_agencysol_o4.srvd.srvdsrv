@@ -1,0 +1,11 @@
+@EndUserText: {
+  label: 'Service Definition for ZC_AGENCYSOL'
+}
+@ObjectModel: {
+  leadingEntity: {
+    name: 'ZC_AGENCYSOL'
+  }
+}
+define service ZUI_AGENCYSOL_O4 provider contracts odata_v4_ui {
+  expose ZC_AGENCYSOL as Agency;
+}
