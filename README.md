@@ -6,7 +6,7 @@
 
 ## Description
 
-This repository** contains the solution** for the SAP TechEd Hands-On session called **AD180 - Build SAP Fiori Apps with ABAP Cloud powered by Joule's ABAP developer capabilities**.
+This repository contains the **solution packages** for jump-start session called **AD180 - Build SAP Fiori Apps with ABAP Cloud powered by Joule's ABAP developer capabilities** at SAP TechEd Virtual 2024.
 
 ABAP Cloud is the development model for building clean core compliant business apps, services, and extensions on SAP S/4HANA Cloud, SAP S/4HANA, and SAP BTP ABAP Environment. ABAP Cloud covers different development scenarios, i.e. transactional, analytical, and integration scenarios, including enterprise search capabilities. The ABAP RESTful Application Programming Model (RAP) ist at the heart of ABAP Cloud for building transactional SAP Fiori apps, OData-based Web APIs, local APIs, and business events.
 
