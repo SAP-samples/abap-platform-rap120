@@ -22,10 +22,7 @@ In this hands-on tutorial, you will learn how generative AI can support the deve
 > 
 > The appropriate flavor of the [ABAP Flight Reference Scenario](https://github.com/SAP-samples/abap-platform-refscen-flight) must available in the system before importing the solution package.
 
-<details>
-<summary>Click to expand!</summary>
-
-Follow this instructions to import the solutions into your system:
+Follow these steps to import the solution packages into your system:
 
 1. [Install the abapGit plugin in your ABAP Development Tools (ADT) for Eclipse](https://developers.sap.com/tutorials/abap-install-abapgit-plugin.html) if you have not already done so.
 2. Create the ABAP packages **`ZRAP120_SOL`**, **`ZRAP120_AGENCY_SOL`**, and **`ZRAP120_EMPLOYEE_SOL`** in ADT in the relevant system. [(_see details below_)](https://github.tools.sap/ABAP-Product-Management/rap120/blob/main/README.md#create-the-required-packages-prior-the-import)
@@ -53,8 +50,6 @@ Follow this instructions to import the solutions into your system:
 - Package Name: **`ZRAP120_EMPLOYEE_SOL`**
 - Description: _**`RAP120 - Block B: Solution Package for the Employee App`**_
 - Superpackage: **`ZRAP120_SOL`**
-
-</details>
 
 ## Known Issues
 [^Top of page](#)
