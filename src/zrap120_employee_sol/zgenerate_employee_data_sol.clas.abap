@@ -12,22 +12,21 @@
  CLASS zgenerate_employee_data_sol IMPLEMENTATION.
 
    METHOD if_oo_adt_classrun~main.
-     DATA: dummy_manager_uuid TYPE sysuuid_x16.
+     DATA dummy_manager_uuid TYPE sysuuid_x16.
 
      "delete existing data, if available
      DELETE FROM zemployeesol.
-     "EXIT.
 
      "insert employee data
      INSERT zemployeesol  FROM (
          SELECT
-           FROM /dmo/employee_hr AS employee
+           FROM /DMO/I_Employee_HR AS employee
            FIELDS
              uuid(  )                  AS uuid,
              employee~employee         AS employee_id,
-             employee~first_name       AS first_name,
-             employee~last_name        AS last_name,
-             employee~salary_currency  AS salary_curr,
+             employee~FirstName       AS first_name,
+             employee~LastName        AS last_name,
+             employee~SalaryCurrency  AS salary_curr,
              employee~salary           AS salary,
              employee~manager          AS manager_id,
              @dummy_manager_uuid       AS manager_uuid   "dummy manager UUID
