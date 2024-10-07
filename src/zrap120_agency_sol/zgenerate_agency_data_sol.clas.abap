@@ -42,6 +42,6 @@
      INSERT zagencysol FROM TABLE @agencies.
 
      COMMIT WORK.
-     out->write( |[RAP120] Demo agency data successfully generated.  | ).
+     out->write( |[RAP120 / AD180] Demo agency data successfully generated. | ).
    ENDMETHOD.
  ENDCLASS.
