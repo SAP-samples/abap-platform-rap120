@@ -1,6 +1,8 @@
 class ZBP_C_AGENCYSOL definition
   public
-  create private .
+  abstract
+  final
+  for behavior of ZC_AGENCYSOL .
 
 public section.
 protected section.

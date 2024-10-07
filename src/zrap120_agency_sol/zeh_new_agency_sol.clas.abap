@@ -1,10 +1,11 @@
-class ZEH_NEW_AGENCY_SOL definition
-  public
-  create private .
+CLASS zeh_new_agency_sol DEFINITION
+  PUBLIC
+  FINAL FOR EVENTS OF ZR_AGENCYSOL
+  CREATE PUBLIC .
 
-public section.
-protected section.
-private section.
+  PUBLIC SECTION.
+  PROTECTED SECTION.
+  PRIVATE SECTION.
 ENDCLASS.
 
 
