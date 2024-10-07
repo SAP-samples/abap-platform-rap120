@@ -23,15 +23,21 @@ In this hands-on tutorial, you will learn how generative AI can support the deve
 Follow these steps to import the solution packages into your system:
 
 1. [Install the abapGit plugin in your ABAP Development Tools (ADT) for Eclipse](https://developers.sap.com/tutorials/abap-install-abapgit-plugin.html) if you have not already done so.
-2. Create the ABAP packages **`ZRAP120_SOL`**, **`ZRAP120_AGENCY_SOL`**, and **`ZRAP120_EMPLOYEE_SOL`** in ADT in the relevant system. [(_see details below_)](https://github.tools.sap/ABAP-Product-Management/rap120/blob/main/README.md#create-the-required-packages-prior-the-import)
-3. Open the **abapGit Repositories** view in ADT 
-4. Create a link to the `rap120` abapGit repository by clicking on the **+** icon and maintaining the required information in the _**Link New abapGit Repository...**_ window:    
+2. Create the ABAP package **`ZRAP120_SOL`** in ADT in the relevant system.
+      - Package Name: `ZRAP120_SOL`
+      - Description: _`RAP120 - Solution Packages`_
+      - ✅ _Add to favorites packages_
+      - Superpackage: `ZLOCAL`
+      
+4. Open the **abapGit Repositories** view in ADT 
+5. Create a link to the `rap120` abapGit repository by clicking on the **+** icon and maintaining the required information in the _**Link New abapGit Repository...**_ window:    
     📤 Git repository URL: `https://github.com/SAP-samples/abap-platform-rap100`  
     👤 Credentials: Enter your user and either your password or personal access token.   
     📦 Package: `ZRAP120_SOL`
-5. Now pull/import the FULL solution implementation using the context menu _**Pull...**_.
-6. Activate the imported development objects (**Ctrl+Shift+F3**) and publish the local endpoint of the service bindings `ZUI_AGENCYSOL_O4` and `ZUI_EMPLOYEESOL_O4` .
+6. Now pull/import the FULL solution implementation using the context menu _**Pull...**_.
+7. Activate the imported development objects (**Ctrl+Shift+F3**) and publish the local endpoint of the service bindings `ZUI_AGENCYSOL_O4` and `ZUI_EMPLOYEESOL_O4` .
 
+<!--
 ### Create the required packages prior the import
 
 **Main Package:**
@@ -48,6 +54,8 @@ Follow these steps to import the solution packages into your system:
 - Package Name: **`ZRAP120_EMPLOYEE_SOL`**
 - Description: _**`RAP120 - Block B: Solution Package for the Employee App`**_
 - Superpackage: **`ZRAP120_SOL`**
+
+-->
 
 ## Known Issues
 [^Top of page](#)
