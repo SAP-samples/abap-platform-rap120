@@ -1,4 +1,4 @@
- CLASS zgenerator_agency_data_sol DEFINITION
+ CLASS zgenerate_agency_data_sol DEFINITION
    PUBLIC
    FINAL
    CREATE PUBLIC .
@@ -11,7 +11,7 @@
 ENDCLASS.
 
 
-CLASS ZGENERATOR_AGENCY_DATA_SOL IMPLEMENTATION.
+CLASS ZGENERATE_AGENCY_DATA_SOL IMPLEMENTATION.
 
    METHOD if_oo_adt_classrun~main.
 
