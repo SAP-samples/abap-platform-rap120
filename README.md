@@ -31,11 +31,11 @@ Follow these steps to import the solution packages into your system:
       
 4. Open the **abapGit Repositories** view in ADT 
 5. Create a link to the `rap120` abapGit repository by clicking on the **+** icon and maintaining the required information in the _**Link New abapGit Repository...**_ window:    
-    📤 Git repository URL: `https://github.com/SAP-samples/abap-platform-rap100`  
+    📤 Git repository URL: `https://github.com/SAP-samples/abap-platform-rap120`  
     👤 Credentials: Enter your user and either your password or personal access token.   
     📦 Package: `ZRAP120_SOL`
 6. Now pull/import the FULL solution implementation using the context menu _**Pull...**_.
-7. Activate the imported development objects (**Ctrl+Shift+F3**) and publish the local endpoint of the service bindings `ZUI_AGENCYSOL_O4` and `ZUI_EMPLOYEESOL_O4` .
+7. Activate the imported development objects (**Ctrl+Shift+F3**) and publish the local service endpoint of the service bindings `ZUI_AGENCYSOL_O4` and `ZUI_EMPLOYEESOL_O4` to view the service URL, entity sets and associations.
 
 <!--
 ### Create the required packages prior the import
