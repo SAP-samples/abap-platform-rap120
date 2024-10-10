@@ -11,7 +11,7 @@ ABAP Cloud is the development model for building clean core compliant business a
 In this hands-on tutorial, you will learn how generative AI can support the development of clean core compliant draft-enabled transactional SAP Fiori elements apps with the ABAP RESTful Application Programming Model (RAP) as well as read-only SAP Fiori elements apps in ABAP Cloud. You will also learn how to define and raise business events in RAP-based applications that can be consumed locally or remotely via SAP Event Mesh for loosely coupled integration scenarios.
 
 
-## 📤Solution Package
+## Solution Package
 [^Top of page](#)
 
 > You can import the solution package **`ZRAP120_SOL`** and its sub-packages **`ZRAP120_AGENCY_SOL`** and **`ZRAP120_EMPLOYEE_SOL`** into your system. 
