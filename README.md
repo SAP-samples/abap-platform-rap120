@@ -8,7 +8,7 @@ This repository contains the **solution packages** for jump-start session called
 
 ABAP Cloud is the development model for building clean core compliant business apps, services, and extensions on SAP S/4HANA Cloud, SAP S/4HANA, and SAP BTP ABAP Environment. ABAP Cloud covers different development scenarios, i.e. transactional, analytical, and integration scenarios, including enterprise search capabilities. The ABAP RESTful Application Programming Model (RAP) ist at the heart of ABAP Cloud for building transactional SAP Fiori apps, OData-based Web APIs, local APIs, and business events.
 
-In this hands-on tutorial, you will learn how generative AI can support the development of clean core compliant draft-enabled transactional SAP Fiori elements apps with the ABAP RESTful Application Programming Model (RAP) as well as read-only SAP Fiori elements apps in ABAP Cloud. You will also learn how to define and raise business events in RAP-based applications that can be consumed locally or remotely via SAP Event Mesh for loosely coupled integration scenarios.
+In this hands-on tutorial, you will learn how generative AI can support the development of clean core compliant draft-enabled transactional SAP Fiori elements apps with the ABAP RESTful Application Programming Model (RAP) as well as read-only SAP Fiori elements apps in ABAP Cloud. You will also learn how to define and raise business events in RAP-based applications that can be consumed locally or remotely via SAP Event Mesh for loosely coupled integration scenarios. 
 
 
 ## Solution Package
