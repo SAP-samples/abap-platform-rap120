@@ -29,7 +29,7 @@ First, you'll create an ABAP package, a database table, and an ABAP class to pop
 > - If you don't have a group ID yet, then check the section [Getting Started - Group ID](../ex0/README.md#group-id) to define a suffix for your artifacts.    
 
 ## Exercise 1.1: Create package
-[^Top of page](#)
+[^Top of page](#Introduction)
 
 > Create your exercise package ![package](images/adt_package.png)**`ZRAP120_AI_###`**.
 >    
@@ -61,7 +61,7 @@ First, you'll create an ABAP package, a database table, and an ABAP class to pop
 </details>
 
 ## Exercise 1.2: Create a database table
-[^Top of page](#)
+[^Top of page](#Introduction)
 
 > Create the database table ![table](images/adt_tabl.png)**`ZTRAVEL_###`** to store the _Travel_ data.   
 
@@ -126,7 +126,7 @@ First, you'll create an ABAP package, a database table, and an ABAP class to pop
 </details>
 
 ## Exercise 1.3: Create a data generator class
-[^Top of page](#)
+[^Top of page](#Introduction)
 
 > Create the ABAP class ![class](images/adt_class.png)**`ZCL_TRAVEL_GEN_DATA_###`** to fill the previously created database table with demo _travel_ data.
 
@@ -219,7 +219,7 @@ First, you'll create an ABAP package, a database table, and an ABAP class to pop
 
 
 ## Exercise 1.4: Generate mock data using Joule Predictive Code Completion💎
-[^Top of page](#)
+[^Top of page](#Introduction)
 
 > Generate mock data using the **Joule Predictive Code Completion💎** feature in ADT.
 >  
@@ -253,7 +253,7 @@ First, you'll create an ABAP package, a database table, and an ABAP class to pop
  </details>
 
 ## Exercise 1.5: Generate the transactional UI service
-[^Top of page](#)
+[^Top of page](#Introduction)
 
 > Create your OData v4 based UI services along with the underlying RAP business object (BO) with all the needed ABAP artefacts - e.g. CDS view entities, behavior definition and implementation - using the built-in ADT generator.   
 > 
@@ -347,7 +347,7 @@ First, you'll create an ABAP package, a database table, and an ABAP class to pop
  </details>
 
 ## Exercise 1.6: Publish and preview the Travel app
-[^Top of page](#)
+[^Top of page](#Introduction)
 
 > Publish the local service endpoint of your service binding ![service binding](images/adt_srvb.png)**`ZUI_TRAVEL_###_O4`**  and start the _Fiori elements App Preview_ in ADT.  
 >
@@ -369,7 +369,7 @@ First, you'll create an ABAP package, a database table, and an ABAP class to pop
 </details>
 
 ## Exercise 1.7: Create an helper class
-[^Top of page](#)
+[^Top of page](#Introduction)
 
 > Create the ABAP helper class ![class](images/adt_class.png)**`ZCL_TRAVEL_HELPER_###`** that will contain common business logic that can be consumed by different business objects and methods - for example, in determinations or validations within our RAP application. 
 > 
@@ -439,7 +439,7 @@ First, you'll create an ABAP package, a database table, and an ABAP class to pop
 </details>
   
 ## Summary & Next exercise
-[^Top of page](#)
+[^Top of page](#Introduction)
 
 Now that you've... 
 - created an ABAP package,

@@ -35,7 +35,7 @@ A validation is implicitly invoked by the business object’s framework if the t
 -->
 
 ## Exercise 4.1: Define and implement the validation
-[^Top of page](#)
+[^Top of page](#Introduction)
 
 > Define the validation **`validateCustomer`** in the behavior definition ![behaviordefinition](images/adt_bdef.png)**`ZR_TRAVEL_###`** and implement it in the behavior implementation class, aka behavior pool, ![class](images/adt_class.png)**`ZBP_R_TRAVEL_###`**.  
 
@@ -163,7 +163,7 @@ A validation is implicitly invoked by the business object’s framework if the t
 </details>
   
 ## Exercise 4.2: Enhance validation with Joule Predictive Code Completion💎
-[^Top of page](#)
+[^Top of page](#Introduction)
 
 > Implement the validation **`validateCustomer`** which checks if the customer ID, **`CustomerID`**, that is entered by the consumer is valid using **Joule Predictive Code Completion💎**. An appropriate message should be raised and displayed on the UI for each invalid value.  
 > 
@@ -287,7 +287,7 @@ A validation is implicitly invoked by the business object’s framework if the t
 
 
 ## Exercise 4.3: Preview and test the enhanced _Travel_ app
-[^Top of page](#)
+[^Top of page](#Introduction)
 
 > Now preview and test the enhanced _Travel_ app. 
 
@@ -301,7 +301,7 @@ A validation is implicitly invoked by the business object’s framework if the t
  </details>
 
 ## Summary & Next Exercise
-[^Top of page](#)
+[^Top of page](#Introduction)
 
 Now that you've... 
 - defined and implemented a validation, 

@@ -41,7 +41,7 @@ The ISLM and ABAP AI SDK integration offers a unified solution for business and 
 > ℹ️ **Reminder**: Don't forget to replace the suffix placeholder **`###`** with your chosen or assigned group ID in the exercise steps below. 
 
 ## Exercise 6.1: Create an intelligent scenario
-[^Top of page](#)
+[^Top of page](#Introduction)
 
 > Create an intelligent scenario, aka _ISLM scenario_, which is an ABAP representation of a predictive business specific use case - **`SIDEBYSIDE`** in the present exercise.
 
@@ -70,7 +70,7 @@ The ISLM and ABAP AI SDK integration offers a unified solution for business and 
 </details>
 
 ## Exercise 6.2: Create an intelligent scenario model
-[^Top of page](#)
+[^Top of page](#Introduction)
 
 > Create an intelligent scenario model, aka _ISLM model_.
 
@@ -108,7 +108,7 @@ The ISLM and ABAP AI SDK integration offers a unified solution for business and 
 
 
 ## Exercise 6.3: Test the ABAP AI SDK within the ABAP helper class
-[^Top of page](#)
+[^Top of page](#Introduction)
 
 > Now test the ABAP AI SDK powered by ISLM within the ABAP helper class ![class](images/adt_class.png)**`ZCL_TRAVEL_HELPER_###`**.
 
@@ -216,7 +216,7 @@ The full source code in the class should now look like this:
 
 
 ## Summary & Next Exercise
-[^Top of page](#)
+[^Top of page](#Introduction)
 
 Now that you've... 
 - created an intelligent scenario (aka _ISLM scenario_),

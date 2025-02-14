@@ -20,7 +20,7 @@ In this exercise, you'll now enhance the base BO data model by adding a calculat
 > Due to time constraints, we will not define CDS access control in this workshop. 
 
 ## Exercise 2.1: Add a simple calculated field in the CDS view
-[^Top of page](#)
+[^Top of page](#Introduction)
 
 > Add the calculated field **`VatTax`** to the CDS view ![datadefinition](images/adt_ddls.png)**`ZR_TRAVEL_###`** to calculate the value-added tax of a _travel_ entry.
 
@@ -93,7 +93,7 @@ In this exercise, you'll now enhance the base BO data model by adding a calculat
 
 
 ## Exercise 2.2: Generate unit tests using Joule CDS Unit Test Skill💎
-[^Top of page](#)
+[^Top of page](#Introduction)
 
 > You will now generate unit tests for the CDS view ![datadefinition](images/adt_ddls.png)**`ZR_TRAVEL_###`** using **Joule CDS Unit Test Skill**💎.
 >
@@ -135,7 +135,7 @@ In this exercise, you'll now enhance the base BO data model by adding a calculat
 </details>
 
 ## Summary & Next Exercise
-[^Top of page](#)
+[^Top of page](#Introduction)
 
 Now that you've... 
 - enhanced the base BO data model with a calculated field,

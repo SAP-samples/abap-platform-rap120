@@ -41,7 +41,7 @@ In this exercise, you will now define and implement a determination called **`se
 --> 
 
 ## Exercise 5.1: Define and implement the determination
-[^Top of page](#)
+[^Top of page](#Introduction)
 
 > Define the determination **`setInitialTravelStatus`** in the behavior definition ![behaviordefinition](images/adt_bdef.png)**`ZR_TRAVEL_###`** and implement it in the behavior implementation class, aka behavior pool, ![class](images/adt_class.png)**`ZBP_R_TRAVEL_###`**.  
 
@@ -71,7 +71,7 @@ In this exercise, you will now define and implement a determination called **`se
 </details>
 
 ## Exercise 5.2: Enhance determination with Joule Predictive Code Completion💎
-[^Top of page](#)
+[^Top of page](#Introduction)
 
 > Enhance the determination **`setInitialTravelStatus`** using **Joule Predictive Code Completion💎**.
 > 
@@ -240,7 +240,7 @@ In this exercise, you will now define and implement a determination called **`se
 
 ## Exercise 5.3: Preview and test the enhanced Travel App
 
-[^Top of page](#)
+[^Top of page](#Introduction)
 
 > You can now preview and test the changes by creating a new travel instance in the _Travel_ app.
 
@@ -257,7 +257,7 @@ In this exercise, you will now define and implement a determination called **`se
 </details>
 
 ## Summary & Next Exercise
-[^Top of page](#)
+[^Top of page](#Introduction)
 
 Now that you've... 
 - defined a determination,

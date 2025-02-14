@@ -17,7 +17,7 @@ In this exercise, you will now analyze the ABAP helper class ![class](images/adt
 
 
 ## Exercise 3.1: Analyze dependencies with Joule ABAP Unit Test Skill💎
-[^Top of page](#)
+[^Top of page](#Introduction)
 
 >  Analyze the ABAP helper class ![class](images/adt_class.png)**`ZCL_TRAVEL_HELPER_###`**. 
 >  
@@ -47,7 +47,7 @@ In this exercise, you will now analyze the ABAP helper class ![class](images/adt
 </details>
 
 ## Exercise 3.2: Define the ABAP unit test class
-[^Top of page](#)
+[^Top of page](#Introduction)
 
 > Define the unit test class ![class](images/adt_class.png)**`LTCL_TRAVEL_HELPER_###`**.
 
@@ -72,7 +72,7 @@ In this exercise, you will now analyze the ABAP helper class ![class](images/adt
 
 
 ## Exercise 3.3: Generate test doubles with Joule ABAP Unit Test Skill💎
-[^Top of page](#)
+[^Top of page](#Introduction)
 
 > After identifying test-unfriendly dependencies in the code to test, isolate these dependencies in your test class by replacing them with test doubles to improve the stability of unit test results. 
 > By substituting calls to database tables or APIs with test doubles, you ensure that your unit tests remain stable and predictable, regardless of the system you're working on.
@@ -99,7 +99,7 @@ In this exercise, you will now analyze the ABAP helper class ![class](images/adt
 </details>
 
 ## Exercise 3.4: Add unit test with Joule Predictive Code Completion💎
-[^Top of page](#)
+[^Top of page](#Introduction)
 
 > Now utilize **Joule Predictive Code Completion**💎 to assist you in developing unit test logic.
 >  
@@ -202,7 +202,7 @@ In this exercise, you will now analyze the ABAP helper class ![class](images/adt
 
 
 ## Summary & Next Exercise
-[^Top of page](#)
+[^Top of page](#Introduction)
 
 Now that you've... 
 - analyzed test-unfriendly dependencies with **Joule ABAP Unit Skill**,
