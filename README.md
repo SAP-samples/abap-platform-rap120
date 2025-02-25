@@ -18,7 +18,7 @@ The [Reuse Tool](https://reuse.software/) must be used for your samples project.
 Please edit this file as it is the primary description file for your project. You can find some placeholder titles for sections below.
 -->
 
-# RAP120 - Build SAP Fiori Apps with ABAP Cloud and Joule
+# RAP120 - Build SAP Fiori Apps with ABAP Cloud and Joule for developers
 
 <!-- Please include descriptive title -->
 
@@ -29,7 +29,7 @@ Please edit this file as it is the primary description file for your project. Yo
 ## Description
 <!-- Please include SEO-friendly description -->
 
-This repository contains the material for the hands-on session **RAP120 - Build SAP Fiori Apps with ABAP Cloud and Joule**💎. 
+This repository contains the material for the hands-on session **RAP120 - Build SAP Fiori Apps with ABAP Cloud and Joule for developers**💎. 
 
 **Table of Content**
 - [Requirements for attending this workshop](#requirements-for-attending-this-workshop)
@@ -113,9 +113,9 @@ Follow these steps to build a SAP Fiori App with Joule in ABAP Cloud
 ## Recordings
 [^Top of page](#)
 
-▶️ Watch the replay of the virtual **Devtoberfest 2024 Session: Explore Joule for developers, with ABAP capabilities**.
+▶️ Watch the replay of the virtual **TechEd 2024 Session: Explore Joule for developers, with ABAP AI capabilities**.
 
-[<img src="devtoberfest-img.png" alt="Devtoberfest" width="60%">](https://www.youtube.com/watch?v=W1B8CWprDFM)
+[<img src="teched-img.png" alt="TechEd" width="60%">](https://www.youtube.com/watch?v=r1aXK21e6pk)
 
 
 ## 📤Solution Package
