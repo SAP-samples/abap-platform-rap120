@@ -34,7 +34,7 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
 > ℹ️ **Reminder**: Do not forget to replace the suffix placeholder **`###`** with your choosen or assigned group ID in the exercise steps below. 
 
 ## Exercise 6.1: Define and implement a new method in the ABAP helper class
-[^Top of page](#)
+[^Top of page](#Introduction)
 
 >  Define and implement a new method named **`generate_description`** in the ABAP helper class ![class](images/adt_class.png)**`ZCL_TRAVEL_HELPER_###`**.
 
@@ -139,7 +139,7 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
 
 
 ## Exercise 6.2: Define and implement the determination
-[^Top of page](#)
+[^Top of page](#Introduction)
 
 > Define the determination **`setDescription`** in the behavior definition ![behaviordefinition](images/adt_bdef.png)**`ZR_TRAVEL_###`** and implement it in the behavior implementation class, aka behavior pool, ![class](images/adt_class.png)**`ZBP_R_TRAVEL_###`**.  
 
@@ -303,7 +303,7 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
 
 
 ## Exercise 6.3: Preview and test the enhanced Travel App
-[^Top of page](#)
+[^Top of page](#Introduction)
 <details>
   <summary>🔵 Click to expand!</summary>
 
@@ -318,7 +318,7 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
 
 
 ## Summary
-[^Top of page](#)
+[^Top of page](#Introduction)
 
 Now that you've... 
 - defined and implemented a determination
