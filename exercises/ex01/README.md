@@ -393,7 +393,6 @@ First, you'll create an ABAP package, a database table, and an ABAP class to pop
       CREATE PUBLIC .
 
       PUBLIC SECTION.
-        INTERFACES if_oo_adt_classrun.
         METHODS: validate_customer IMPORTING iv_customer_id TYPE /dmo/customer_id RETURNING VALUE(rv_exists) TYPE abap_bool.
         METHODS: get_booking_status IMPORTING iv_status TYPE /dmo/booking_status_text RETURNING VALUE(rv_status) TYPE /dmo/booking_status.
 
@@ -404,10 +403,6 @@ First, you'll create an ABAP package, a database table, and an ABAP class to pop
 
 
      CLASS zcl_travel_helper_### IMPLEMENTATION.
- 
-      METHOD if_oo_adt_classrun~main.
-         "We will use this method to test the ABAP AI SDK
-      ENDMETHOD. 
 
       METHOD validate_customer.
         rv_exists = abap_false.

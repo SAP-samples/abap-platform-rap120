@@ -102,14 +102,14 @@ Follow these steps to build a SAP Fiori App with Joule in ABAP Cloud
 | [Exercise 3: Analyze the ABAP helper class and create ABAP unit tests](exercises/ex03/README.md) | -- |
 | [Exercise 4: Add a validation](exercises/ex04/README.md) | -- |
 | [Exercise 5: Add a determination](exercises/ex05/README.md) | -- |
+| [Exercise 6: Utilize the ABAP AI SDK powered by Intelligent Scenario Lifecycle Management (ISLM)](exercises/ex06/README.md) | -- |
 
 
-#### Bonus Exercise: ABAP AI SDK
+<!-- #### Bonus Exercise: ABAP AI SDK
 
 | Exercises | -- |
 | ------------- |  -- |
-| [Exercise 6: Utilize the ABAP AI SDK powered by Intelligent Scenario Lifecycle Management (ISLM)](exercises/ex06/README.md) | -- |
-| [Exercise 7: Add a determination and enhance it with the ABAP AI SDK powered by ISLM](exercises/ex07/README.md) | -- |
+| [Exercise 7: Add a determination and enhance it with the ABAP AI SDK powered by ISLM](exercises/ex07/README.md) | -- | -->
 
    
 ## Recordings
