@@ -4,9 +4,10 @@
 
 ## Introduction
 
-In the previous exercise, you've learned to utilze the ABAP AI SDK powered by Intelligent Scenario Lifecycle Management (ISLM) (_see [Exercise 6](../ex06/README.md)_).
+In the exercises 1-5, you've created a SAP Fiori elements based _Travel_ app to process travel data. In the previous exercise, you've defined and implemented a determination called **`setInitialTravelStatus`**, which is used to set a default value for the overall status of a _Travel_ entity instance (_see [Exercise 5](../ex05/README.md)_).  
+> ℹ️ **Important note**: To complete the present exercise, you must have completed at least _[Exercise 1](../ex01/README.md)_. The exercises 2-5 are optional.
 
-In this exercise, you will learn how to instantiate the ABAP AI SDK and call it within a determination named **`setDescription`** to integrate AI capabilities into your RAP business object.
+In this exercise, you will learn how to use the ABAP AI SDK powered by Intelligent Scenario Lifecycle Management (ISLM). It is the official client to consume large language models in ABAP. You will also learn how to instantiate the ABAP AI SDK and call it within a determination named **`setDescription`** to integrate AI capabilities into your RAP business object.
 
 ### Exercises
 
