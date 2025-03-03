@@ -205,7 +205,7 @@ The full source code in the class should now look like this:
     METHOD generate_description.
       "This method will be called in the determination setDescription
       TRY.
-        FINAL(api) = cl_aic_islm_compl_api_factory=>get( )->create_instance( islm_scenario = '<ISLM Scenario provided by the instructor>' ).
+        FINAL(api) = cl_aic_islm_compl_api_factory=>get( )->create_instance( islm_scenario = 'ZINTS_RAP120_AI_###' ).
       CATCH cx_aic_api_factory INTO DATA(lx_api).
       rv_description = ''.
       ENDTRY.
