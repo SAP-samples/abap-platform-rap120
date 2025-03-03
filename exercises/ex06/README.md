@@ -13,14 +13,14 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
 <details>
   <summary>ℹ️Click to expand!</summary>
 
-    ABAP AI SDK powered by Intelligent Scenario Lifecycle Management (ISLM) is an ABAP re-use library that supports you to interact with large language models (LLMs) hosted on the generative AI hub in SAP AI Core. With the ABAP AI SDK, you can build your own AI-based features in ABAP.
+  ABAP AI SDK powered by Intelligent Scenario Lifecycle Management (ISLM) is an ABAP re-use library that supports you to interact with large language models (LLMs) hosted on the generative AI hub in SAP AI Core. With the ABAP AI SDK, you can build your own AI-based features in ABAP.
 
-    As an ABAP developer, you can access large language models from within your ABAP system. The ABAP AI SDK powered by ISLM is designed to standardize and ease the access to large language models and provide convenient features for ABAP developers. The ISLM and ABAP AI SDK integration offers a unified solution for business and technical use cases, facilitating prompt execution within the context of business applications.
-      
-    ABAP AI SDK powered by ISLM is the official client to consume large language models in ABAP. 
+  As an ABAP developer, you can access large language models from within your ABAP system. The ABAP AI SDK powered by ISLM is designed to standardize and ease the access to large language models and provide convenient features for ABAP developers. The ISLM and ABAP AI SDK integration offers a unified solution for business and technical use cases, facilitating prompt execution within the context of business applications.
+    
+  ABAP AI SDK powered by ISLM is the official client to consume large language models in ABAP. 
 
-    > ℹ️ Curious to learn more about ABAP AI SDK powered by ISLM?   
-      Check out the [Developing your own AI-enabled applications | SAP Help Portal](https://help.sap.com/docs/abap-ai/generative-ai-in-abap-cloud/developing-your-own-ai-enabled-applications?locale=en-US) or the Devtoberfest 2024 session [Integrating Generative AI in SAP S/4HANA with ISLM](https://www.youtube.com/watch?v=SezO4_HTHfQ)
+  > ℹ️ Curious to learn more about ABAP AI SDK powered by ISLM?   
+  Check out the [Developing your own AI-enabled applications | SAP Help Portal](https://help.sap.com/docs/abap-ai/generative-ai-in-abap-cloud/developing-your-own-ai-enabled-applications?locale=en-US) or the Devtoberfest 2024 session [Integrating Generative AI in SAP S/4HANA with ISLM](https://www.youtube.com/watch?v=SezO4_HTHfQ)
 
  </details>
 
