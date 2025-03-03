@@ -1,6 +1,6 @@
 [Home - RAP120](../../README.md)
 
-# Exercise 6: Utilize the ABAP AI SDK powered by Intelligent Scenario Lifecycle Management (ISLM)
+# Exercise 7: Utilize the ABAP AI SDK powered by Intelligent Scenario Lifecycle Management (ISLM)
 
 ## Introduction
 
@@ -33,14 +33,14 @@ The ISLM and ABAP AI SDK integration offers a unified solution for business and 
 
 ### Exercises
 
-- [6.1 - Create an intelligent scenario](#exercise-61-create-an-intelligent-scenario)
-- [6.2 - Create an intelligent scenario model](#exercise-62-create-an-intelligent-scenario-model)
-- [6.3 - Test the ABAP AI SDK within the ABAP helper class](#exercise-63-test-the-abap-ai-sdk-within-the-abap-helper-class)
+- [7.1 - Create an intelligent scenario](#exercise-71-create-an-intelligent-scenario)
+- [7.2 - Create an intelligent scenario model](#exercise-72-create-an-intelligent-scenario-model)
+- [7.3 - Test the ABAP AI SDK within the ABAP helper class](#exercise-73-test-the-abap-ai-sdk-within-the-abap-helper-class)
 - [Summary & Next Exercise](#summary--next-exercise)
 
 > ℹ️ **Reminder**: Don't forget to replace the suffix placeholder **`###`** with your chosen or assigned group ID in the exercise steps below. 
 
-## Exercise 6.1: Create an intelligent scenario
+## Exercise 7.1: Create an intelligent scenario
 [^Top of page](#)
 
 > Create an intelligent scenario, aka _ISLM scenario_, which is an ABAP representation of a predictive business specific use case - **`SIDEBYSIDE`** in the present exercise.
@@ -69,7 +69,7 @@ The ISLM and ABAP AI SDK integration offers a unified solution for business and 
 
 </details>
 
-## Exercise 6.2: Create an intelligent scenario model
+## Exercise 7.2: Create an intelligent scenario model
 [^Top of page](#)
 
 > Create an intelligent scenario model, aka _ISLM model_.
@@ -107,7 +107,7 @@ The ISLM and ABAP AI SDK integration offers a unified solution for business and 
 </details>
 
 
-## Exercise 6.3: Test the ABAP AI SDK within the ABAP helper class
+## Exercise 7.3: Test the ABAP AI SDK within the ABAP helper class
 [^Top of page](#)
 
 > Now test the ABAP AI SDK powered by ISLM within the ABAP helper class ![class](images/adt_class.png)**`ZCL_TRAVEL_HELPER_###`**.
