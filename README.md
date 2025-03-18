@@ -120,7 +120,7 @@ Follow these steps to build a SAP Fiori App with Joule in ABAP Cloud
 [<img src="teched-img.png" alt="TechEd" width="60%">](https://www.youtube.com/watch?v=r1aXK21e6pk)
 
 
-## 📤Solution Package
+<!-- ## 📤Solution Package
 [^Top of page](#)
 
 > You can import this solution package **`ZRAP120_SOL`** into following ABAP systems:
@@ -128,9 +128,9 @@ Follow these steps to build a SAP Fiori App with Joule in ABAP Cloud
 > - SAP S/4HANA Cloud Public Edition 
 > - SAP S/4HANA Cloud Private Edition and SAP S/4HANA as of Release 2022. 
 >
-> The [ABAP Flight Reference Scenario](https://github.com/SAP-samples/abap-platform-refscen-flight) must be available in the relevant system before importing the solution package.
+> The [ABAP Flight Reference Scenario](https://github.com/SAP-samples/abap-platform-refscen-flight) must be available in the relevant system before importing the solution package. -->
 
-<details>
+<!-- <details>
 <summary>Click to expand!</summary>
   
 Follow the instructions provided below to import the solution into your publc cloud system - i.e. SAP BTP ABAP environment and SAP S/4HANA Cloud Public Edition.
@@ -143,7 +143,7 @@ Follow the instructions provided below to import the solution into your publc cl
 5. Now pull/import the solution implementation using the context menu _**Pull...**_.
 6. Activate the imported development objects (**Ctrl+Shift+F3**).
 
-</details>   
+</details>    -->
 
 ## ⚠Known Issues
 No known issues. 
