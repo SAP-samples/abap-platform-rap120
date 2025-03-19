@@ -1,8 +1,8 @@
+https://942665f4-0b3e-4a8b-b0dd-4440c9189d73.abap-web.eu10.hana.ondemand.com
+
 [Home - Workshops about the ABAP RESTful Application Programming Model (RAP) ](https://github.com/SAP-samples/abap-platform-rap-workshops/blob/main/README.md)
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/abap-platform-rap120)](https://api.reuse.software/info/github.com/SAP-samples/abap-platform-rap120)
 
-
-https://942665f4-0b3e-4a8b-b0dd-4440c9189d73.abap-web.eu10.hana.ondemand.com/
 
 <!-- [![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/abap-platform-rap100)](https://api.reuse.software/info/github.com/SAP-samples/abap-platform-rap100) -->
 
