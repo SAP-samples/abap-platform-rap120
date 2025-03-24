@@ -150,17 +150,17 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
   
   Add the **`Destination`** as mandatory field:
 
-    ```BDL
-     field ( mandatory : create )
+  ```BDL
+    field ( mandatory : create )
       TravelId,
       Destination;
-    ```  
+  ```  
 
   Then, define the following determination:
 
-     ```BDL
-      determination setDescription on modify { create; }
-     ```
+  ```BDL
+    determination setDescription on modify { create; }
+  ```
  
   2. Save![save icon](images/adt_save.png) and activate![activate icon](images/adt_activate.png) the changes in ![bdef icon](images/adt_bdef.png)**`ZR_TRAVEL_###`**.
  
