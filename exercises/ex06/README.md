@@ -44,7 +44,7 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
   1. Go to the ABAP class ![class](images/adt_class.png)**`ZCL_TRAVEL_HELPER_###`** and define the **`generate_description`** method 
 
      ```ABAP
-       METHODS: generate_description RETURNING VALUE(rv_description) TYPE /dmo/description.
+       METHODS: generate_description IMPORTING iv_city TYPE /dmo/city RETURNING VALUE(rv_description) TYPE /dmo/description
      ```
 
   2. Replace the implementation of the method **`generate_description`** with the source code provided below.
@@ -63,7 +63,7 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
            TRY.
              DATA(messages) = api->create_message_container( ).
              messages->set_system_role( 'You are a travel agent expert' ).
-             messages->add_user_message( 'Generate a travel destination description. It should be less than 100 characters' ).
+             messages->add_user_message( 'Generate a travel description for ' && iv_city && '.It should be less than 100 characters' ).
              rv_description = api->execute_for_messages( messages )->get_completion( ).
            CATCH cx_aic_completion_api INTO DATA(lx_completion).
              rv_description = ''.
@@ -124,7 +124,7 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
            TRY.
              DATA(messages) = api->create_message_container( ).
              messages->set_system_role( 'You are a travel agent expert' ).
-             messages->add_user_message( 'Generate a travel destination description. It should be less than 100 characters' ).
+             messages->add_user_message( 'Generate a travel description for ' && iv_city && '.It should be less than 100 characters' ).
              rv_description = api->execute_for_messages( messages )->get_completion( ).
            CATCH cx_aic_completion_api INTO DATA(lx_completion).
              rv_description = ''.
@@ -146,8 +146,17 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
  <details>
   <summary>🔵 Click to expand!</summary>
 
-  1. Go to the behavior definiton ![bdef icon](images/adt_bdef.png)**`ZR_TRAVEL_###`** and define the following determination:
+  1. Go to the behavior definiton ![bdef icon](images/adt_bdef.png)**`ZR_TRAVEL_###`**  
+  
+   Add the **`Destination`** as mandatory field:
 
+    ```BDL 
+      field ( mandatory : create )
+        TravelId,
+        Destination;
+    ```  
+    Then, define the following determination:
+    
      ```BDL 
        determination setDescription on modify { create; }
      ```
@@ -179,7 +188,7 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
            ENTITY Travel
              UPDATE FIELDS ( Description )
              WITH VALUE #( FOR key IN lt_travel ( %tky   = key-%tky
-                                                  Description = lo_travel_helper->generate_description(  )  ) )
+                                                  Description = lo_travel_helper->generate_description(  key-Destination )  ) )
            REPORTED DATA(update_reported).
 
          reported = CORRESPONDING #( DEEP update_reported ).
@@ -288,7 +297,7 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
              ENTITY Travel
                UPDATE FIELDS ( Description )
                WITH VALUE #( FOR key IN lt_travel ( %tky   = key-%tky
-                                                   Description = lo_travel_helper->generate_description(  )  ) )
+                                                   Description = lo_travel_helper->generate_description( key-Destination )  ) )
              REPORTED DATA(update_reported).
 
            reported = CORRESPONDING #( DEEP update_reported ).
