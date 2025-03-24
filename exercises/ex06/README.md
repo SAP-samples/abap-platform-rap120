@@ -156,7 +156,7 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
       Destination;
   ```  
 
-  Then, define the following determination:
+  Then, define the **`setDescription`** determination:
 
   ```BDL
     determination setDescription on modify { create; }
