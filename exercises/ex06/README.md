@@ -155,8 +155,9 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
         TravelId,
         Destination;
     ```  
-    Then, define the following determination:
     
+    Then, define the following determination:
+
      ```BDL 
        determination setDescription on modify { create; }
      ```
