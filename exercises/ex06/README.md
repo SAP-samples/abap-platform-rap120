@@ -151,9 +151,9 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
   Add the **`Destination`** as mandatory field:
 
     ```BDL 
-    field ( mandatory : create )
-      TravelId,
-      Destination;
+      field ( mandatory : create )
+        TravelId,
+        Destination;
     ```  
 
   Then, define the following determination:
