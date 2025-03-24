@@ -83,7 +83,7 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
          PUBLIC SECTION.
            METHODS: validate_customer IMPORTING iv_customer_id TYPE /dmo/customer_id RETURNING VALUE(rv_exists) TYPE abap_bool.
            METHODS: get_booking_status IMPORTING iv_status TYPE /dmo/booking_status_text RETURNING VALUE(rv_status) TYPE /dmo/booking_status.
-           METHODS: generate_description RETURNING VALUE(rv_description) TYPE string.
+           METHODS: generate_description IMPORTING iv_city TYPE /dmo/city RETURNING VALUE(rv_description) TYPE /dmo/description
          PROTECTED SECTION.
          PRIVATE SECTION.
        ENDCLASS.
