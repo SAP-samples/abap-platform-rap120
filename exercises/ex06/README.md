@@ -148,18 +148,18 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
 
   1. Go to the behavior definiton ![bdef icon](images/adt_bdef.png)**`ZR_TRAVEL_###`**  
   
-   Add the **`Destination`** as mandatory field:
+  Add the **`Destination`** as mandatory field:
 
     ```BDL 
-      field ( mandatory : create )
-        TravelId,
-        Destination;
+    field ( mandatory : create )
+      TravelId,
+      Destination;
     ```  
-    
-    Then, define the following determination:
+
+  Then, define the following determination:
 
      ```BDL 
-       determination setDescription on modify { create; }
+      determination setDescription on modify { create; }
      ```
  
   2. Save![save icon](images/adt_save.png) and activate![activate icon](images/adt_activate.png) the changes in ![bdef icon](images/adt_bdef.png)**`ZR_TRAVEL_###`**.
