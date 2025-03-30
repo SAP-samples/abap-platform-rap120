@@ -50,8 +50,8 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
   2. Replace the implementation of the method **`generate_description`** with the source code provided below.
 
       > ⚠️ **Please note** ⚠️
-      - If you're using your own system, please ensure that the [ABAP AI SDK powered by ISLM setup](https://help.sap.com/docs/abap-ai/generative-ai-in-abap-cloud/set-up-abap-ai-sdk-powered-by-intelligent-scenario-lifecycle-management?locale=en-US) is correct and then [create an intelligent scenario and an intelligent scenario model](https://help.sap.com/docs/abap-ai/generative-ai-in-abap-cloud/creating-intelligent-scenario-and-intelligent-scenario-model?locale=en-US).
-      - If you're participating in SAP-led Event, the **`islm_scenario`** parameter will be provided by the instructor.
+      > - If you're using your own system, please ensure that the [ABAP AI SDK powered by ISLM setup](https://help.sap.com/docs/abap-ai/generative-ai-in-abap-cloud/set-up-abap-ai-sdk-powered-by-intelligent-scenario-lifecycle-management?locale=en-US) is correct and then [create an intelligent scenario and an intelligent scenario model](https://help.sap.com/docs/abap-ai/generative-ai-in-abap-cloud/creating-intelligent-scenario-and-intelligent-scenario-model?locale=en-US).
+      > - If you're participating in SAP-led Event, the **`islm_scenario`** parameter will be provided by the instructor.
 
 
       
