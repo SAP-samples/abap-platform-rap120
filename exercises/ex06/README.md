@@ -59,7 +59,7 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
            METHOD generate_description.
 
            TRY.
-             FINAL(api) = cl_aic_islm_compl_api_factory=>get( )->create_instance( islm_scenario = '<ISLM Scenario will be provided by the instructor>' ).
+             FINAL(api) = cl_aic_islm_compl_api_factory=>get( )->create_instance( islm_scenario = '< Your own ISLM Scenario or provided by the instructor>' ).
            CATCH cx_aic_api_factory INTO DATA(lx_api).
             rv_description = ''.
            ENDTRY.
@@ -120,7 +120,7 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
          METHOD generate_description.
            "This method will be called in the determination setDescription
            TRY.
-             FINAL(api) = cl_aic_islm_compl_api_factory=>get( )->create_instance( islm_scenario = '<ISLM Scenario will be provided by the instructor>' ).
+             FINAL(api) = cl_aic_islm_compl_api_factory=>get( )->create_instance( islm_scenario = '< Your own ISLM Scenario or provided by the instructor>' ).
            CATCH cx_aic_api_factory INTO DATA(lx_api).
             rv_description = ''.
            ENDTRY.
