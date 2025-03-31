@@ -51,7 +51,7 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
 
       > ⚠️ **Please note** ⚠️
       > - If you're using your own system, please ensure that the [ABAP AI SDK powered by ISLM setup](https://help.sap.com/docs/abap-ai/generative-ai-in-abap-cloud/set-up-abap-ai-sdk-powered-by-intelligent-scenario-lifecycle-management?locale=en-US) is correct and then [create an intelligent scenario and an intelligent scenario model](https://help.sap.com/docs/abap-ai/generative-ai-in-abap-cloud/creating-intelligent-scenario-and-intelligent-scenario-model?locale=en-US).
-      > - If you're participating in SAP-led Event, the **`islm_scenario`** parameter will be provided by the instructor.
+      > - If you're participating in SAP-led Event, the **`islm_scenario`** parameter will be provided below by the instructor.
 
 
       
@@ -59,7 +59,8 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
            METHOD generate_description.
 
            TRY.
-             FINAL(api) = cl_aic_islm_compl_api_factory=>get( )->create_instance( islm_scenario = '< Your own ISLM Scenario or provided by the instructor>' ).
+           "If you're using your own system, replace ZINTS_RAP120_AI2_000 with your own ISLM Scenario '
+             FINAL(api) = cl_aic_islm_compl_api_factory=>get( )->create_instance( islm_scenario = 'ZINTS_RAP120_AI2_000' ).
            CATCH cx_aic_api_factory INTO DATA(lx_api).
             rv_description = ''.
            ENDTRY.
@@ -120,7 +121,8 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
          METHOD generate_description.
            "This method will be called in the determination setDescription
            TRY.
-             FINAL(api) = cl_aic_islm_compl_api_factory=>get( )->create_instance( islm_scenario = '< Your own ISLM Scenario or provided by the instructor>' ).
+           "If you're using your own system, replace ZINTS_RAP120_AI2_000 with your own ISLM Scenario '
+             FINAL(api) = cl_aic_islm_compl_api_factory=>get( )->create_instance( islm_scenario = 'ZINTS_RAP120_AI2_000' ).
            CATCH cx_aic_api_factory INTO DATA(lx_api).
             rv_description = ''.
            ENDTRY.
