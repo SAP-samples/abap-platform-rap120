@@ -24,11 +24,8 @@ Now, let's get started!
 >>  -->
 
 - [Group ID](#group-id)
-- [Create an _ABAP Cloud Project_ or an _ABAP Project_ in ADT](#create-an-abap-cloud-project-or-an-abap-project-in-adt)
+- [Create an _ABAP Cloud Project_ in ADT](#create-an-abap-cloud-project-in-adt)
 - [Helpful Information](#helpful-information)
-  - Find/Replace
-  - Modern ABAP Syntax
-  - Useful ADT Shortcuts
 - [Summary](#summary)
 
 
@@ -67,21 +64,17 @@ Once you've found an available group ID, choose **Cancel**.
 
 </details>   
 
-## Create an _ABAP Cloud Project_ or an _ABAP Project_ in ADT
+## Create an _ABAP Cloud Project_ in ADT
 
-> In this step, you will create a connection to the ABAP system in your ADT installation. To do this, you need to create an _**ABAP Project**_ or an _**ABAP Cloud Project**_.
+> In this step, you will create a connection to the ABAP system in your ADT installation. To do this, you need to create an _**ABAP Cloud Project**_.
 >
-> If you're working on an SAP S/4HANA, on-prem or private cloud edition, you must create an _**ABAP Project**_ in ADT. Otherwise, create an _**ABAP Cloud Project**_ if you're working on an *SAP BTP ABAP Environment system* or an *SAP S/4HANA Cloud, public edition, system*.
->
-> ⚠ **Please note:** ⚠    
-> If you've already created an *ABAP Cloud Project* or an *ABAP Project* in the ABAP Development Tools for Eclipse (ADT), then skip this section.  
-
-### Create an _ABAP Cloud Project_ in ADT
-[^Top of page](#)
-
 > Create an _**ABAP Cloud Project**_ in your ADT installation to connect it to the *SAP BTP ABAP Environment* or *SAP S/4HANA Cloud (public edition)* system.
 >
 > ⚠️ Skip this step if you're working on _SAP S/4HANA system, on-prem or private cloud edition_, including CAL instances. 
+
+> ⚠ **Please note:** ⚠    
+> If you've already created an *ABAP Cloud Project* or an *ABAP Project* in the ABAP Development Tools for Eclipse (ADT), then skip this section.  
+
 
 <details>
   <summary>Click to expand!</summary>
@@ -90,15 +83,15 @@ Once you've found an available group ID, choose **Cancel**.
 
     ![Open ABAP Perspective](images/abap_perspective.png)
 
-2. Now create the _**ABAP Cloud Project**_ as shown on the screenshots provided below. 
+2. Now create the _**ABAP Cloud Project**_ as shown below. 
 
-    ![Create ABAP Project Cloud 1/2](images/steampunk_systemlogon1.png)
+    ![Create ABAP Project Cloud 1/2](images/ABAP_Cloud_Project.gif)
 
     ![Create ABAP Project Cloud 2/2](images/steampunk_systemlogon2.png)
 
 </details>
 
-### Create an _ABAP Project_ in ADT
+<!-- ### Create an _ABAP Project_ in ADT
 [^Top of page](#)
 
 > Create an _**ABAP Project**_ in your ADT installation to connect it to the *SAP S/4HANA system, on-prem or private cloud edition* system, includig to CAL Instances.
@@ -118,7 +111,7 @@ Once you've found an available group ID, choose **Cancel**.
 
    ![Create ABAP Project](images/adt_create_abapproject.png)
 
-</details>
+</details> -->
 
 <!-- </details> -->
 
