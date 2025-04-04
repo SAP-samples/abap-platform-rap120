@@ -54,7 +54,7 @@ In this exercise, you will now define and implement a determination called **`se
         determination setInitialTravelStatus on save { create; }
       ```
 
-      The statement specifies the name of the new determination, **`setInitialTravelStatus`** and **`on modify`** as the determination time when creating new _travel_ instance (**`{ create }`**). 
+      The statement specifies the name of the new determination, **`setInitialTravelStatus`** and **`on save`** as the determination time when creating new _travel_ instance (**`{ create }`**). 
 
    2. Save![save icon](images/adt_save.png) and activate![activate icon](images/adt_activate.png) the changes in ![bdef icon](images/adt_bdef.png)**`ZR_TRAVEL_###`**  
 
