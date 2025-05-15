@@ -58,8 +58,8 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
            METHOD generate_description.
 
            TRY.
-           "If you're using your own system, replace ZINTS_RAP120_AI2_000 with your own ISLM Scenario '
-             FINAL(api) = cl_aic_islm_compl_api_factory=>get( )->create_instance( islm_scenario = 'ZINTS_RAP120_AI2_000' ).
+           "If you're using your own system, replace ZINTS_RAP120 with your own ISLM Scenario '
+             FINAL(api) = cl_aic_islm_compl_api_factory=>get( )->create_instance( islm_scenario = 'ZINTS_RAP120' ).
            CATCH cx_aic_api_factory INTO DATA(lx_api).
             rv_description = ''.
            ENDTRY.
@@ -120,8 +120,8 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
          METHOD generate_description.
            "This method will be called in the determination setDescription
            TRY.
-           "If you're using your own system, replace ZINTS_RAP120_AI2_000 with your own ISLM Scenario '
-             FINAL(api) = cl_aic_islm_compl_api_factory=>get( )->create_instance( islm_scenario = 'ZINTS_RAP120_AI2_000' ).
+           "If you're using your own system, replace ZINTS_RAP120 with your own ISLM Scenario '
+             FINAL(api) = cl_aic_islm_compl_api_factory=>get( )->create_instance( islm_scenario = 'ZINTS_RAP120' ).
            CATCH cx_aic_api_factory INTO DATA(lx_api).
             rv_description = ''.
            ENDTRY.
