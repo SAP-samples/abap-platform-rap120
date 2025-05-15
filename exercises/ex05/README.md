@@ -6,7 +6,7 @@
 
 In the previous exercise, you've defined and implemented a backend validation called **`validateCustomer`** to verify if the customer ID entered is valid (_see [Exercise 4](../ex04/README.md)_).
 
-In this exercise, you will now define and implement a determination called **`setInitialTravelStatus`**, which will be used to set a default value for the overall status of a _Travel_ entity instance.  
+In this exercise, you will now define and implement a determination called **`calcTotalTravelPrice`**, which will be used to set a default value for the overall status of a _Travel_ entity instance.  
 
 ### Exercises
 
@@ -43,37 +43,69 @@ In this exercise, you will now define and implement a determination called **`se
 ## Exercise 5.1: Define and implement the determination
 [^Top of page](#Introduction)
 
-> Define the determination **`setInitialTravelStatus`** in the behavior definition ![behaviordefinition](images/adt_bdef.png)**`ZR_TRAVEL_###`** and implement it in the behavior implementation class, aka behavior pool, ![class](images/adt_class.png)**`ZBP_R_TRAVEL_###`**.  
+> Define the determination **`calcTotalTravelPrice`** in the behavior definition ![behaviordefinition](images/adt_bdef.png)**`ZR_TRAVEL###`** and implement it in the behavior implementation class, aka behavior pool, ![class](images/adt_class.png)**`ZBP_R_TRAVEL###`**.  
 
  <details>
   <summary>🔵 Click to expand!</summary>
 
-   1. Go to the behavior definiton ![bdef icon](images/adt_bdef.png)**`ZR_TRAVEL_###`** and insert the following 
+   1. In the the behavior definiton ![bdef icon](images/adt_bdef.png)**`ZR_TRAVEL###`**, define the fields **`TotalPrice`** and **`CurrencyCode`** fields as readonly
 
-      ```ABAP 
-        determination setInitialTravelStatus on save { create; }
+      ```ABAP
+      managed implementation in class ZBP_R_TRAVEL003 unique;
+      strict ( 2 );
+      with draft;
+      extensible;
+      define behavior for ZR_TRAVEL003 alias Travel
+      persistent table ZTRAVEL003
+      extensible
+      draft table ZTRAVEL_D003
+      etag master LocalLastChangedAt
+      lock master total etag LastChangedAt
+      authorization master( global )
+
+      {
+        field ( readonly )
+        Uuid,
+        LocalCreatedBy,
+        LocalCreatedAt,
+        LocalLastChangedBy,
+        LocalLastChangedAt,
+        LastChangedAt,
+        //Define TotalPrice and CurrencyCode as readonly
+        TotalPrice,
+        CurrencyCode;
+
+        .......
+      }
       ```
+   
+   2. Go to the behavior definiton ![bdef icon](images/adt_bdef.png)**`ZR_TRAVEL###`** and add the following determination
 
-      The statement specifies the name of the new determination, **`setInitialTravelStatus`** and **`on save`** as the determination time when creating new _travel_ instance (**`{ create }`**). 
+      ```ABAP
+      determination calcTotalTravelPrice on save { create; update; }
+      ```
+  
+   The statement specifies the name of the new determination, **`calcTotalTravelPrice`** and **`on save`** as the determination time when creating and updating new _Travel_ instance (**`{ create; update; }`**). 
 
-   2. Save![save icon](images/adt_save.png) and activate![activate icon](images/adt_activate.png) the changes in ![bdef icon](images/adt_bdef.png)**`ZR_TRAVEL_###`**  
+   2. Save![save icon](images/adt_save.png) and activate![activate icon](images/adt_activate.png) the changes in ![bdef icon](images/adt_bdef.png)**`ZR_TRAVEL###`**  
 
-   3. Declare the required method in the behavior implementation class ![class](images/adt_class.png)**`ZBP_R_TRAVEL_###`** using the ADT Quick Fix by setting the cursor on the determination name and pressing **Ctrl + 1** to open the **Quick Assist** view.
+   3. Declare the required method in the behavior implementation class ![class](images/adt_class.png)**`ZBP_R_TRAVEL###`** using the ADT Quick Fix by setting the cursor on the determination name and pressing **Ctrl + 1** to open the **Quick Assist** view.
  
-      Select the entry _**`Add method for determination setInitialTravelStatus of entity zr_travel_###...`**_. 
+      Select the entry _**`Add method for determination calcTotalTravelPrice of entity ZR_TRAVEL###...`**_. 
 
-   4. Save ![save icon](images/adt_save.png) and activate ![activate icon](images/adt_activate.png) the changes in ![class icon](images/adt_class.png)**`ZBP_R_TRAVEL_###`**.  
+   4. Save ![save icon](images/adt_save.png) and activate ![activate icon](images/adt_activate.png) the changes in ![class icon](images/adt_class.png)**`ZBP_R_TRAVEL###`**.  
 
-      As result, the `FOR DETERMINE` method **`setInitialTravelStatus`** will be added to the local handler class **`lcl_handler`** of the behavior pool of the _Travel_ BO entity ![class icon](images/adt_class.png)**`ZBP_TRAVELTP_###`**. 
+      As result, the `FOR DETERMINE` method **`calcTotalTravelPrice`** will be added to the local handler class **`lcl_handler`** of the behavior pool of the _Travel_ BO entity ![class icon](images/adt_class.png)**`ZBP_R_TRAVEL###`**. 
 
-      ![](/exercises/ex05/images/5_1_Determination.gif)
+  ![](/exercises/ex05/images/rap120_2505_ex51.gif)
+
 
 </details>
 
 ## Exercise 5.2: Enhance determination with Joule Predictive Code Completion💎
 [^Top of page](#Introduction)
 
-> Enhance the determination **`setInitialTravelStatus`** using **Joule Predictive Code Completion💎**.
+> Enhance the determination **`calcTotalTravelPrice`** using **Joule Predictive Code Completion💎**.
 > 
 > ⚠ **Warning regarding Joule's outputs** ⚠    
 > Please be aware that the outputs generated by Joule in this exercise description may differ from yours, and the provided code snippets should be adjusted accordingly. **Always review the code generated by Joule**.
@@ -83,20 +115,13 @@ In this exercise, you will now define and implement a determination called **`se
 
  1. Disable **Joule Predictive Code Completion** by pressing ![](/exercises/images/adt_joule_code_completion2.png) in the toolbar. 
  
- 2. Go to your implementation class ![class](images/adt_class.png)**`ZBP_R_TRAVEL_###`** and add the following ABAP comments in the **`setInitialTravelStatus`** method implementation
+ 2. Go to your implementation class ![class](images/adt_class.png)**`ZBP_R_TRAVEL###`** and add the following ABAP comments in the **`calcTotalTravelPrice`** method implementation
 
     ```ABAP
 
-        "1) ABAP EML to read the field Status from CDS view ZR_TRAVEL_###
-
-
-        "2) If Status is already set, do nothing, i.e. remove such instances
-
-
-        "3) ABAP EML to update the field Status in CDS view ZR_TRAVEL_###. Use variable update_reported
-
-
-        "4) Set the changing parameter reported
+        "1) Read Travel and Booking entities
+        "2) Calculate the total price. Use reduce operator
+        "3) Update the total price of the Travel
 
     ```
  
@@ -104,42 +129,43 @@ In this exercise, you will now define and implement a determination called **`se
 
 4. Press **Enter** after each comment. 
  
-   **Joule Predictive Code Completion** will suggest the next lines based on the previous comment that you've added in the previous step.
+  >**Joule Predictive Code Completion**💎 will suggest the next lines based on the previous comment that you've added in the previous step.
 
-5. Review the code and press _**Tab**_. Adjust the code if needed. 
+5. Review the code and press _**Tab**_.  
 
-6. Make sure to finish the implementation of **`setInitialTravelStatus`**. 
- 
-   We will call the method `get_booking_status` from our helper class ![adt class](/exercises/ex04/images/adt_class.png)**`ZCL_TRAVEL_HELPER_###`**. 
- 
-   At the end, the code should look something like this:
+6. Make sure to finish the implementation of **`calcTotalTravelPrice`** as below. At the end, the code should look something like this:
 
    ```ABAP
-     METHOD setInitialTravelStatus.
+     METHOD calcTotalTravelPrice.
+     "1) Read Travel and Booking entities
+      READ ENTITIES OF zr_travel003 IN LOCAL MODE
+        ENTITY travel
+        ALL FIELDS WITH CORRESPONDING #( keys )
+        RESULT DATA(lt_travel)
+      ENTITY travel BY \_Booking
+       ALL FIELDS WITH CORRESPONDING #( keys )
+      RESULT DATA(lt_booking).
 
-      DATA(lo_travel_helper) = NEW zcl_travel_helper_###(  ).
+      DATA(lv_total_price) = VALUE #( lt_travel[ 1 ]-TotalPrice OPTIONAL ).
+      DATA(lv_currency_code) = VALUE #( lt_booking[ 1 ]-CurrencyCode OPTIONAL ).
 
-        "1) ABAP EML to read the field Status from CDS view ZR_TRAVEL_###
-         READ ENTITIES OF ZR_TRAVEL_### IN LOCAL MODE
-           ENTITY Travel
-             FIELDS ( Status ) WITH CORRESPONDING #( keys )
-             RESULT DATA(lt_travel).
+      "2)Calculate the total price. Use reduce operator
+      DATA(total_price) = REDUCE /dmo/total_price( INIT sum TYPE /dmo/total_price
+                                                                FOR booking IN lt_booking
+                                                                NEXT sum     = sum + booking-FlightPrice ).
+      "3)Update the total price of the Travel
+      IF lv_total_price <> total_price.
+        MODIFY ENTITIES OF zr_travel003 IN LOCAL MODE
+        ENTITY travel
+          UPDATE
+            FIELDS ( TotalPrice CurrencyCode )
+            WITH VALUE #( FOR key IN keys
+                              ( %tky            = key-%tky
+                                TotalPrice      = total_price
+                                CurrencyCode    = lv_currency_code ) )
+        REPORTED DATA(reported_modify).
+      ENDIF.
 
-       "2) If Status is already set, do nothing, i.e. remove such instances
-       DELETE lt_travel WHERE Status IS NOT INITIAL.
-       CHECK lt_travel IS NOT INITIAL.
-
-
-       "3) ABAP EML to update the field Status in CDS view ZR_TRAVEL_###. Use variable update_reported
-       MODIFY ENTITIES OF ZR_TRAVEL_### IN LOCAL MODE
-         ENTITY Travel
-           UPDATE FIELDS ( Status )
-           WITH VALUE #( FOR key IN lt_travel ( %tky   = key-%tky
-                                                Status = lo_travel_helper->get_booking_status( 'New' )  ) )
-         REPORTED DATA(update_reported).
-
-        "4) Set the changing parameter reported
-        reported = CORRESPONDING #( DEEP update_reported ).
      ENDMETHOD.
 
    ```
@@ -147,7 +173,7 @@ In this exercise, you will now define and implement a determination called **`se
    Your source code should look like this:
 
    ```ABAP 
-       CLASS LHC_ZR_TRAVEL_### DEFINITION INHERITING FROM CL_ABAP_BEHAVIOR_HANDLER.
+       CLASS LHC_ZR_TRAVEL### DEFINITION INHERITING FROM CL_ABAP_BEHAVIOR_HANDLER.
          PRIVATE SECTION.
            METHODS:
              GET_GLOBAL_AUTHORIZATIONS FOR GLOBAL AUTHORIZATION
@@ -156,18 +182,18 @@ In this exercise, you will now define and implement a determination called **`se
                RESULT result,
              validateCustomer FOR VALIDATE ON SAVE
                    IMPORTING keys FOR Travel~validateCustomer,
-             setInitialTravelStatus FOR DETERMINE ON MODIFY
-                   IMPORTING keys FOR Travel~setInitialTravelStatus.
+             calcTotalTravelPrice FOR DETERMINE ON SAVE
+                   IMPORTING keys FOR Travel~calcTotalTravelPrice.
 
        ENDCLASS.
 
-       CLASS LHC_ZR_TRAVEL_### IMPLEMENTATION.
+       CLASS LHC_ZR_TRAVEL### IMPLEMENTATION.
          METHOD GET_GLOBAL_AUTHORIZATIONS.
          ENDMETHOD.
 
          METHOD validateCustomer.
-           "ABAP EML to read the field CustomerId from CDS view ZR_TRAVEL_###
-             READ ENTITIES OF ZR_TRAVEL_### IN LOCAL MODE
+           "ABAP EML to read the field CustomerId from CDS view ZR_TRAVEL###
+             READ ENTITIES OF ZR_TRAVEL### IN LOCAL MODE
                  ENTITY Travel
                    FIELDS ( CustomerID )
                    WITH CORRESPONDING #( keys )
@@ -202,39 +228,47 @@ In this exercise, you will now define and implement a determination called **`se
                ENDLOOP.
          ENDMETHOD.
 
-         METHOD setInitialTravelStatus.
+    METHOD calcTotalTravelPrice.
+     "1) Read Travel and Booking entities
+      READ ENTITIES OF zr_travel003 IN LOCAL MODE
+        ENTITY travel
+        ALL FIELDS WITH CORRESPONDING #( keys )
+        RESULT DATA(lt_travel)
+      ENTITY travel BY \_Booking
+        ALL FIELDS WITH CORRESPONDING #( keys )
+      RESULT DATA(lt_booking).
 
-           DATA(lo_travel_helper) = NEW zcl_travel_helper_###(  ).
+      DATA(lv_total_price) = VALUE #( lt_travel[ 1 ]-TotalPrice OPTIONAL ).
+      DATA(lv_currency_code) = VALUE #( lt_booking[ 1 ]-CurrencyCode OPTIONAL ).
 
-           "1) ABAP EML to read the field Status from CDS view ZR_TRAVEL_###
-           READ ENTITIES OF ZR_TRAVEL_### IN LOCAL MODE
-             ENTITY Travel
-               FIELDS ( Status ) WITH CORRESPONDING #( keys )
-               RESULT DATA(lt_travel).
+      "2)Calculate the total price. Use reduce operator
+      DATA(total_price) = REDUCE /dmo/total_price( INIT sum TYPE /dmo/total_price
+                                                                FOR booking IN lt_booking
+                                                                NEXT sum     = sum + booking-FlightPrice ).
+      "3)Update the total price of the Travel
+      IF lv_total_price <> total_price.
+        MODIFY ENTITIES OF zr_travel003 IN LOCAL MODE
+        ENTITY travel
+          UPDATE
+            FIELDS ( TotalPrice CurrencyCode )
+            WITH VALUE #( FOR key IN keys
+                              ( %tky            = key-%tky
+                                TotalPrice      = total_price
+                                CurrencyCode    = lv_currency_code ) )
+        REPORTED DATA(reported_modify).
+      ENDIF.
 
-           "2) If Status is already set, do nothing, i.e. remove such instances
-           DELETE lt_travel WHERE Status IS NOT INITIAL.
-           CHECK lt_travel IS NOT INITIAL.
+      ENDMETHOD.
 
-           "3) ABAP EML to update the field Status in CDS view ZR_TRAVEL_###. Use variable update_reported
-           MODIFY ENTITIES OF ZR_TRAVEL_### IN LOCAL MODE
-             ENTITY Travel
-               UPDATE FIELDS ( Status )
-               WITH VALUE #( FOR key IN lt_travel ( %tky   = key-%tky
-                                                   Status = lo_travel_helper->get_booking_status( 'New' )  ) )
-             REPORTED DATA(update_reported).
-
-           "4) Set the changing parameter reported
-           reported = CORRESPONDING #( DEEP update_reported ).
-
-         ENDMETHOD.
-
-       ENDCLASS.
+     ENDCLASS.
    ```
 
 5. Save ![save icon](images/adt_save.png) and activate ![activate icon](images/adt_activate.png) the changes. 
 
-   ![](/exercises/ex05/images/5_2_Determination_Joule_Code_Completion.gif)
+
+ ![](/exercises/ex05/images/rap120_2505_ex52.gif)
+
+
 
 </details>
 
@@ -250,10 +284,11 @@ In this exercise, you will now define and implement a determination called **`se
 1. Refresh your application in the browser using **F5** if the browser is still open   
    or go to your service binding ![service binding](images/adt_srvb.png)**`ZUI_TRAVEL_###_04`** and start the Fiori elements App preview for the **`Travel`** entity set.
 
-2. Create a new _Travel_ instance. The **`Status`** field should now be set automatically by the logic you just implemented.   
- 
-   The initial status of the created should now be set to **`New`** (**`N`**). 
+2. Create a new _Travel_ instance with one ore more _Booking_ instances. The **`Total Price`** field should calculated by the logic you just implemented. 
 
+![](/exercises/ex05/images/rap120_2505_ex53.gif)
+
+ 
 </details>
 
 ## Summary & Next Exercise

@@ -44,7 +44,7 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
   1. Go to the ABAP class ![class](images/adt_class.png)**`ZCL_TRAVEL_HELPER_###`** and define the **`generate_description`** method 
 
      ```ABAP
-       METHODS: generate_description IMPORTING iv_city TYPE /dmo/city RETURNING VALUE(rv_description) TYPE /dmo/description
+       METHODS: generate_description IMPORTING iv_city TYPE /dmo/city RETURNING VALUE(rv_description) TYPE /dmo/description.
      ```
 
   2. Replace the implementation of the method **`generate_description`** with the source code provided below.
@@ -146,18 +146,17 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
 ## Exercise 6.2: Define and implement the determination
 [^Top of page](#Introduction)
 
-> Define the determination **`setDescription`** in the behavior definition ![behaviordefinition](images/adt_bdef.png)**`ZR_TRAVEL_###`** and implement it in the behavior implementation class, aka behavior pool, ![class](images/adt_class.png)**`ZBP_R_TRAVEL_###`**.  
+> Define the determination **`setDescription`** in the behavior definition ![behaviordefinition](images/adt_bdef.png)**`ZR_TRAVEL###`** and implement it in the behavior implementation class, aka behavior pool, ![class](images/adt_class.png)**`ZBP_R_TRAVEL###`**.  
 
  <details>
   <summary>🔵 Click to expand!</summary>
 
-  1. Go to the behavior definiton ![bdef icon](images/adt_bdef.png)**`ZR_TRAVEL_###`**  
+  1. Go to the behavior definiton ![bdef icon](images/adt_bdef.png)**`ZR_TRAVEL###`**  
   
   Add the **`Destination`** as mandatory field:
 
   ```BDL
     field ( mandatory : create )
-      TravelId,
       Destination;
   ```  
 
@@ -167,11 +166,11 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
     determination setDescription on modify { create; }
   ```
  
-  2. Save![save icon](images/adt_save.png) and activate![activate icon](images/adt_activate.png) the changes in ![bdef icon](images/adt_bdef.png)**`ZR_TRAVEL_###`**.
+  2. Save![save icon](images/adt_save.png) and activate![activate icon](images/adt_activate.png) the changes in ![bdef icon](images/adt_bdef.png)**`ZR_TRAVEL###`**.
  
-  3. Declare the required method in behavior implementation class [](images/adt_class.png) **`ZBP_R_TRAVEL_###`** using ADT Quick Fix (**Ctrl + 1**).
+  3. Declare the required method in behavior implementation class [](images/adt_class.png) **`ZBP_R_TRAVEL###`** using ADT Quick Fix (**Ctrl + 1**).
  
-  4. Save![save icon](images/adt_save.png) and activate![activate icon](images/adt_activate.png) the changes in ![class icon](images/adt_class.png)**`ZBP_R_TRAVEL_###`**. 
+  4. Save![save icon](images/adt_save.png) and activate![activate icon](images/adt_activate.png) the changes in ![class icon](images/adt_class.png)**`ZBP_R_TRAVEL###`**. 
  
   5. Please complete the **`setDescription`** implementation by incorporating the code provided below.
 
@@ -182,7 +181,7 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
 
          DATA(lo_travel_helper) = NEW zcl_travel_helper_###(  ).
 
-         READ ENTITIES OF ZR_TRAVEL_### IN LOCAL MODE
+         READ ENTITIES OF ZR_TRAVEL### IN LOCAL MODE
          ENTITY Travel
            FIELDS ( Description ) WITH CORRESPONDING #( keys )
            RESULT DATA(lt_travel).
@@ -190,7 +189,7 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
          DELETE lt_travel WHERE Description IS NOT INITIAL.
          CHECK lt_travel IS NOT INITIAL.
 
-         MODIFY ENTITIES OF ZR_TRAVEL_### IN LOCAL MODE
+         MODIFY ENTITIES OF ZR_TRAVEL### IN LOCAL MODE
            ENTITY Travel
              UPDATE FIELDS ( Description )
              WITH VALUE #( FOR key IN lt_travel ( %tky   = key-%tky
@@ -204,7 +203,7 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
      The complete updated source code in the class should look like this: 
 
      ```ABAP
-       CLASS LHC_ZR_TRAVEL_### DEFINITION INHERITING FROM CL_ABAP_BEHAVIOR_HANDLER.
+       CLASS LHC_ZR_TRAVEL### DEFINITION INHERITING FROM CL_ABAP_BEHAVIOR_HANDLER.
          PRIVATE SECTION.
            METHODS:
              GET_GLOBAL_AUTHORIZATIONS FOR GLOBAL AUTHORIZATION
@@ -213,19 +212,19 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
                RESULT result,
              validateCustomer FOR VALIDATE ON SAVE
                    IMPORTING keys FOR Travel~validateCustomer,
-             setInitialTravelStatus FOR DETERMINE ON MODIFY
-                   IMPORTING keys FOR Travel~setInitialTravelStatus,
+             calcTotalTravelPrice FOR DETERMINE ON SAVE
+                   IMPORTING keys FOR Travel~calcTotalTravelPrice,
              setDescription FOR DETERMINE ON MODIFY
                    IMPORTING keys FOR Travel~setDescription.
        ENDCLASS.
 
-       CLASS LHC_ZR_TRAVEL_### IMPLEMENTATION.
+       CLASS LHC_ZR_TRAVEL### IMPLEMENTATION.
          METHOD GET_GLOBAL_AUTHORIZATIONS.
          ENDMETHOD.
 
          METHOD validateCustomer.
-           "ABAP EML to read the field CustomerId from CDS view ZR_TRAVEL_###
-             READ ENTITIES OF ZR_TRAVEL_### IN LOCAL MODE
+           "ABAP EML to read the field CustomerId from CDS view ZR_TRAVEL###
+             READ ENTITIES OF ZR_TRAVEL### IN LOCAL MODE
                  ENTITY Travel
                    FIELDS ( CustomerID )
                    WITH CORRESPONDING #( keys )
@@ -260,38 +259,42 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
                ENDLOOP.
          ENDMETHOD.
 
-         METHOD setInitialTravelStatus.
+         METHOD calcTotalTravelPrice.
+          "1) Read Travel and Booking entities
+            READ ENTITIES OF zr_travel003 IN LOCAL MODE
+              ENTITY travel
+              ALL FIELDS WITH CORRESPONDING #( keys )
+              RESULT DATA(lt_travel)
+            ENTITY travel BY \_Booking
+              ALL FIELDS WITH CORRESPONDING #( keys )
+            RESULT DATA(lt_booking).
 
-           DATA(lo_travel_helper) = NEW zcl_travel_helper_###(  ).
+            DATA(lv_total_price) = VALUE #( lt_travel[ 1 ]-TotalPrice OPTIONAL ).
+            DATA(lv_currency_code) = VALUE #( lt_booking[ 1 ]-CurrencyCode OPTIONAL ).
 
-           "1) ABAP EML to read the field Status from CDS view ZR_TRAVEL_###
-           READ ENTITIES OF ZR_TRAVEL_### IN LOCAL MODE
-             ENTITY Travel
-               FIELDS ( Status ) WITH CORRESPONDING #( keys )
-               RESULT DATA(lt_travel).
-
-           "2) If Status is already set, do nothing, i.e. remove such instances
-           DELETE lt_travel WHERE Status IS NOT INITIAL.
-           CHECK lt_travel IS NOT INITIAL.
-
-           "3) ABAP EML to update the field Status in CDS view ZR_TRAVEL_###. Use variable update_reported
-           MODIFY ENTITIES OF ZR_TRAVEL_### IN LOCAL MODE
-             ENTITY Travel
-               UPDATE FIELDS ( Status )
-               WITH VALUE #( FOR key IN lt_travel ( %tky   = key-%tky
-                                                   Status = lo_travel_helper->get_booking_status( 'New' )  ) )
-             REPORTED DATA(update_reported).
-
-           "4) Set the changing parameter reported
-           reported = CORRESPONDING #( DEEP update_reported ).
-
+            "2)Calculate the total price. Use reduce operator
+            DATA(total_price) = REDUCE /dmo/total_price( INIT sum TYPE /dmo/total_price
+                                                                      FOR booking IN lt_booking
+                                                                      NEXT sum     = sum + booking-FlightPrice ).
+            "3)Update the total price of the Travel
+            IF lv_total_price <> total_price.
+              MODIFY ENTITIES OF zr_travel003 IN LOCAL MODE
+              ENTITY travel
+                UPDATE
+                  FIELDS ( TotalPrice CurrencyCode )
+                  WITH VALUE #( FOR key IN keys
+                                    ( %tky            = key-%tky
+                                      TotalPrice      = total_price
+                                      CurrencyCode    = lv_currency_code ) )
+              REPORTED DATA(reported_modify).
+            ENDIF.
          ENDMETHOD.
 
          METHOD setDescription.
 
            DATA(lo_travel_helper) = NEW zcl_travel_helper_###(  ).
 
-           READ ENTITIES OF ZR_TRAVEL_### IN LOCAL MODE
+           READ ENTITIES OF ZR_TRAVEL### IN LOCAL MODE
            ENTITY Travel
              FIELDS ( Description ) WITH CORRESPONDING #( keys )
              RESULT DATA(lt_travel).
@@ -299,7 +302,7 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
            DELETE lt_travel WHERE Description IS NOT INITIAL.
            CHECK lt_travel IS NOT INITIAL.
 
-           MODIFY ENTITIES OF ZR_TRAVEL_### IN LOCAL MODE
+           MODIFY ENTITIES OF ZR_TRAVEL### IN LOCAL MODE
              ENTITY Travel
                UPDATE FIELDS ( Description )
                WITH VALUE #( FOR key IN lt_travel ( %tky   = key-%tky
@@ -312,7 +315,10 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
        ENDCLASS.
      ```
 
-  6. Save![save icon](images/adt_save.png) and activate![activate icon](images/adt_activate.png) the changes in ![class icon](images/adt_class.png)**`ZBP_R_TRAVEL_###`**.  
+  6. Save![save icon](images/adt_save.png) and activate![activate icon](images/adt_activate.png) the changes in ![class icon](images/adt_class.png)**`ZBP_R_TRAVEL###`**.  
+
+  
+  ![](/exercises/ex06/images/rap120_2505_ex62.gif)
 
 </details>
 
@@ -327,7 +333,9 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
  
   2. Create a new _Travel_ instance. 
  
-     The **`Description`** field should now be set automatically by the determination `setInitialTravelStatus` you've just implemented. It means that the initial description of the created entity should now be set coming from the LLM output through the ABAP AI SDK powered by ISLM. 
+     The **`Description`** field should now be set automatically by the determination **`setDescription`** that you've just implemented. It means that the initial description of the created entity should now be set coming from the LLM output through the ABAP AI SDK powered by ISLM. 
+
+ ![](/exercises/ex06/images/rap120_2505_ex63.gif)
     
 </details>
 
@@ -340,6 +348,8 @@ Now that you've...
 - enhanced the determination using ABAP AI SDK
 
 Thank you for attending this workshop! 🎉🎉🎉
+
+**Optionally**, you can continue with the next exercise – **[Exercise 7: Try out the ABAP Cloud Generator: Transactional App from Scratch](../ex07/README.md)**
 
 [Home - RAP120](../../README.md)
 

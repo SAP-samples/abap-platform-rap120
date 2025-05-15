@@ -37,16 +37,14 @@ A validation is implicitly invoked by the business object’s framework if the t
 ## Exercise 4.1: Define and implement the validation
 [^Top of page](#Introduction)
 
-> Define the validation **`validateCustomer`** in the behavior definition ![behaviordefinition](images/adt_bdef.png)**`ZR_TRAVEL_###`** and implement it in the behavior implementation class, aka behavior pool, ![class](images/adt_class.png)**`ZBP_R_TRAVEL_###`**.  
+> Define the validation **`validateCustomer`** in the behavior definition ![behaviordefinition](images/adt_bdef.png)**`ZR_TRAVEL###`** and implement it in the behavior implementation class, aka behavior pool, ![class](images/adt_class.png)**`ZBP_R_TRAVEL###`**.  
 
  <details>
   <summary>🔵 Click to expand!</summary>
   
-1. Go to the **Project Explorer** and open your behavior definition ![behaviordefinition](images/adt_bdef.png)**`ZR_TRAVEL_###`**.  
+1. Go to the **Project Explorer** and open your behavior definition ![behaviordefinition](images/adt_bdef.png)**`ZR_TRAVEL###`**.  
 
-2. Because empty values should not be accepted for the field **`CustomerID`**, specify it as a _mandatory_ field. 
- 
-   For that, add the source code below in the curly brackets to your behavior definition as shown in the screenshot below.
+2. Insert the following code into your behavior definition:
  
     ```ABAP 
       field ( mandatory )
@@ -71,94 +69,142 @@ A validation is implicitly invoked by the business object’s framework if the t
      }
    ```    
      
-   The source code in your behavior definition ![behaviordefinition](images/adt_bdef.png)**`ZR_TRAVEL_###`** should look like this:
+   Your behavior definition ![behaviordefinition](images/adt_bdef.png)**`ZR_TRAVEL###`** should look like this:
 
    ```BDL
-    managed implementation in class ZBP_R_TRAVEL_### unique;
+    managed implementation in class ZBP_R_TRAVEL### unique;
     strict ( 2 );
     with draft;
-    define behavior for ZR_TRAVEL_### alias Travel
-    persistent table ZTRAVEL_###
-    draft table ZTRAVEL_###_D
+    extensible;
+    define behavior for ZR_TRAVEL### alias Travel
+    persistent table ZTRAVEL###
+    extensible
+    draft table ZTRAVEL_D###
     etag master LocalLastChangedAt
     lock master total etag LastChangedAt
     authorization master( global )
 
     {
-      field ( mandatory : create )
-        TravelId;
-
-      field ( mandatory )
-         CustomerID;
-
       field ( readonly )
-        CreatedBy,
-        CreatedAt,
-        LocalLastChangedBy,
-        LocalLastChangedAt,
-        LastChangedAt;
+      Uuid,
+      LocalCreatedBy,
+      LocalCreatedAt,
+      LocalLastChangedBy,
+      LocalLastChangedAt,
+      LastChangedAt;
+      
+      // Mandatory
+      field ( mandatory )
+        CustomerID;
 
-      field ( readonly : update )
-        TravelId;
+      field ( numbering : managed )
+      Uuid;
+
 
       create;
       update;
       delete;
-
+      
+      // Validations
       validation validateCustomer on save { create; field CustomerID; }
+
+      // Determinations
 
       draft action Activate optimized;
       draft action Discard;
       draft action Edit;
       draft action Resume;
-      draft determine action Prepare{
+      draft determine action Prepare {
         validation validateCustomer;
       }
 
-      mapping for ZTRAVEL_###
+      mapping for ZTRAVEL### corresponding extensible
       {
+        Uuid = uuid;
         TravelId = travel_id;
         AgencyId = agency_id;
         CustomerId = customer_id;
         BeginDate = begin_date;
         EndDate = end_date;
-        Destination = destination;
         BookingFee = booking_fee;
         TotalPrice = total_price;
         CurrencyCode = currency_code;
         Description = description;
         Status = status;
-        CreatedBy = created_by;
-        CreatedAt = created_at;
+        Destination = destination;
+        LocalCreatedBy = local_created_by;
+        LocalCreatedAt = local_created_at;
         LocalLastChangedBy = local_last_changed_by;
         LocalLastChangedAt = local_last_changed_at;
         LastChangedAt = last_changed_at;
       }
+
+      association _Booking { create; with draft; }
+
+    }
+
+    define behavior for ZR_BOOKING### alias Booking
+    persistent table ZBOOKING###
+    extensible
+    draft table ZBOOKING_D###
+    etag dependent by _Travel
+    lock dependent by _Travel
+    authorization dependent by _Travel
+
+    {
+      field ( readonly )
+      Uuid,
+      ParentUuid;
+
+      field ( numbering : managed )
+      Uuid;
+
+
+      update;
+      delete;
+
+      mapping for ZBOOKING### corresponding extensible
+      {
+        Uuid = uuid;
+        ParentUuid = parent_uuid;
+        BookingId = booking_id;
+        BookingDate = booking_date;
+        CustomerId = customer_id;
+        CarrierId = carrier_id;
+        ConnectionId = connection_id;
+        FlightDate = flight_date;
+        FlightPrice = flight_price;
+        CurrencyCode = currency_code;
+        DiscountedFlightPrice = discounted_flight_price;
+      }
+
+      association _Travel { with draft; }
+
     }
    ``` 
 
    > **Short explanation**:    
    > - Validations are always invoked during the save and specified with the keyword `validateCustomer on save`.    
-   > - `validateCustomer` is a validation with trigger operation `create` and trigger field `CustomerID`.    
+   > - `validateCustomer` is a validation with trigger operation `create` and trigger field `CustomerID`.
+
+   ![](/exercises/ex04/images/rap120_2505_ex41.gif)
      
-5. Save![save icon](images/adt_save.png) and activate![activate icon](images/adt_activate.png) the changes in the behavior definition ![bdef icon](images/adt_bdef.png)**`ZR_TRAVEL_###`**.
+5. Save![save icon](images/adt_save.png) and activate![activate icon](images/adt_activate.png) the changes in the behavior definition ![bdef icon](images/adt_bdef.png)**`ZR_TRAVEL###`**.
 
-6. Declare the required method in behavior implementation class ![](images/adt_class.png)**`ZBP_R_TRAVEL_###`** using the ADT Quick Fix (**Ctrl + 1**).
+6. Declare the required method in behavior implementation class ![](images/adt_class.png)**`ZBP_R_TRAVEL###`** using the ADT Quick Fix (**Ctrl + 1**).
 
-   > ℹ️ **Info**: The ADT Quick Fix is a feature within the ABAP Development Tools (ADT) for Eclipse that helps developers quickly resolve issues in their code. In this case, it's helping to add automatically the validation method's definition and implementation in the class ![](images/adt_class.png)**`ZBP_R_TRAVEL_###`**
+   > ℹ️ **Info**: The ADT Quick Fix is a feature within the ABAP Development Tools (ADT) for Eclipse that helps developers quickly resolve issues in their code. In this case, it's helping to add automatically the validation method's definition and implementation in the class ![](images/adt_class.png)**`ZBP_R_TRAVEL###`**
   
-   To do that, remain in the behavior definition ![bdef icon](images/adt_bdef.png)**`ZR_TRAVEL_###`** and set your cursor on the name of the validation **`validateCustomer`**. 
+   To do that, remain in the behavior definition ![bdef icon](images/adt_bdef.png)**`ZR_TRAVEL###`** and set your cursor on the name of the validation **`validateCustomer`**. 
   
-   Then press **Ctrl + 1** to open the **Quick Assist** view and select the entry _**`Add validation method validateCustomer of entity zr_travel_### ...`**_ from the dialog. 
+   Then press **Ctrl + 1** to open the **Quick Assist** view and select the entry _**`Add validation method validateCustomer of entity ZR_TRAVEL### ...`**_ from the dialog. 
   
-   As a result, the behavior implementation class ![](images/adt_class.png)**`ZBP_R_TRAVEL_###`** will be enhanced with the new validation method. 
+   As a result, the behavior implementation class ![](images/adt_class.png)**`ZBP_R_TRAVEL###`** will be enhanced with the new validation method. 
 
-7. Save![save icon](images/adt_save.png) and activate![activate icon](images/adt_activate.png) the changes in **`ZBP_R_TRAVEL_###`**.
-
-   ![](/exercises/ex04/images/4_Define_implement_validation.gif)
+7. Save![save icon](images/adt_save.png) and activate![activate icon](images/adt_activate.png) the changes in **`ZBP_R_TRAVEL###`**.
 
    > **Hint**:   
-   > If you get the error message _**`The entity ZR_TRAVEL_### does not have a validation VALIDATECUSTOMER.`**_ in the behavior implementation, then try to activate![activate icon](images/adt_activate.png) the behavior definition once again.  
+   > If you get the error message _**`The entity ZR_TRAVEL### does not have a validation VALIDATECUSTOMER.`**_ in the behavior implementation, then try to activate![activate icon](images/adt_activate.png) the behavior definition once again.  
 
 </details>
   
@@ -173,10 +219,10 @@ A validation is implicitly invoked by the business object’s framework if the t
  <details>
   <summary>🔵 Click to expand!</summary>
 
-1. Go to your implementation class ![class](images/adt_class.png)**`ZBP_R_TRAVEL_###`** and add the below comment in the `validateCustomer` method implementation.
+1. Go to your implementation class ![class](images/adt_class.png)**`ZBP_R_TRAVEL###`** and add the below comment in the `validateCustomer` method implementation.
 
    ```
-     "ABAP EML to read the field CustomerId from CDS view ZR_TRAVEL_###
+     "ABAP EML to read the field CustomerId from CDS view ZR_TRAVEL###
    ```
 
 2. Press **Enter** on your keyboard. 
@@ -225,7 +271,7 @@ A validation is implicitly invoked by the business object’s framework if the t
    Your code should look like this:
 
    ```ABAP
-   CLASS LHC_ZR_TRAVEL_### DEFINITION INHERITING FROM CL_ABAP_BEHAVIOR_HANDLER.
+   CLASS LHC_ZR_TRAVEL### DEFINITION INHERITING FROM CL_ABAP_BEHAVIOR_HANDLER.
      PRIVATE SECTION.
        METHODS:
          GET_GLOBAL_AUTHORIZATIONS FOR GLOBAL AUTHORIZATION
@@ -236,12 +282,12 @@ A validation is implicitly invoked by the business object’s framework if the t
                IMPORTING keys FOR Travel~validateCustomer.
    ENDCLASS.
 
-   CLASS LHC_ZR_TRAVEL_### IMPLEMENTATION.
+   CLASS LHC_ZR_TRAVEL### IMPLEMENTATION.
      METHOD GET_GLOBAL_AUTHORIZATIONS.
      ENDMETHOD.
      METHOD validateCustomer.
-         "ABAP EML to read the field CustomerId from CDS view ZR_TRAVEL_###
-         READ ENTITIES OF ZR_TRAVEL_### IN LOCAL MODE
+         "ABAP EML to read the field CustomerId from CDS view ZR_TRAVEL###
+         READ ENTITIES OF ZR_TRAVEL### IN LOCAL MODE
              ENTITY Travel
                FIELDS ( CustomerID )
                WITH CORRESPONDING #( keys )
@@ -281,7 +327,7 @@ A validation is implicitly invoked by the business object’s framework if the t
 
 5. Save ![save icon](images/adt_save.png) and activate ![activate icon](images/adt_activate.png) the changes.
 
-   ![](/exercises/ex04/images/4_Joule_Predictive_Code_Completion.gif)
+ ![](/exercises/ex04/images/rap120_2505_ex42.gif)
 
 </details>
 
@@ -294,7 +340,7 @@ A validation is implicitly invoked by the business object’s framework if the t
  <details>
   <summary>🔵 Click to expand!</summary>
 
-  1. You can either refresh your _Travel_ app in the browser using **F5** if the browser is still open - or go to your service binding ![service binding](../images/adt_srvb.png)**`ZUI_TRAVEL_###_O4`** in ADT and start the Fiori elements App preview for the **`Travel`** entity set.
+  1. You can either refresh your _Travel_ app in the browser using **F5** if the browser is still open - or go to your service binding ![service binding](../images/adt_srvb.png)**`ZUI_TRAVEL_O4###`** in ADT and start the Fiori elements App preview for the **`Travel`** entity set.
   
   2. Play around with the app.
 
