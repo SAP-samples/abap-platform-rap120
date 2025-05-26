@@ -153,11 +153,11 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
 
   1. Go to the behavior definiton ![bdef icon](images/adt_bdef.png)**`ZR_TRAVEL###`**  
   
-  Add the **`Destination`** as mandatory field:
+  Add the **`Description`** as mandatory field:
 
   ```BDL
     field ( mandatory : create )
-      Destination;
+      Description;
   ```  
 
   Then, define the **`setDescription`** determination:
@@ -261,7 +261,7 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
 
          METHOD calcTotalTravelPrice.
           "1) Read Travel and Booking entities
-            READ ENTITIES OF zr_travel003 IN LOCAL MODE
+            READ ENTITIES OF zr_travel### IN LOCAL MODE
               ENTITY travel
               ALL FIELDS WITH CORRESPONDING #( keys )
               RESULT DATA(lt_travel)
@@ -278,7 +278,7 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
                                                                       NEXT sum     = sum + booking-FlightPrice ).
             "3)Update the total price of the Travel
             IF lv_total_price <> total_price.
-              MODIFY ENTITIES OF zr_travel003 IN LOCAL MODE
+              MODIFY ENTITIES OF zr_travel### IN LOCAL MODE
               ENTITY travel
                 UPDATE
                   FIELDS ( TotalPrice CurrencyCode )
