@@ -39,7 +39,7 @@ In this exercise, you'll now enhance the base BO data model by adding a calculat
          when carrier_id = 'LH' then cast(flight_price as abap.dec(16,2)) * cast('0.90' as abap.dec(5,2))
          when carrier_id = 'AF' then cast(flight_price as abap.dec(16,2)) * cast('0.85' as abap.dec(5,2))
          else cast(flight_price as abap.dec(16,2))
-      end as DiscountedFlightPrice
+      end as DiscountedFlightPrice,
    ```
     
  Your CDS data definition ![data definition](images/adt_ddls.png)**`ZR_BOOKING###`** should look like this:
