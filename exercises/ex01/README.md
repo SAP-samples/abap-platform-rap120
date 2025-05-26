@@ -510,6 +510,9 @@ First, you'll create an ABAP package, a database table, and an ABAP class to pop
    }
 
   ```
+
+  3. Save ![save icon](images/adt_save.png) (**Ctrl+S**) and activate ![activate icon](images/adt_activate.png) the changes.
+     
 </details>
 
 
