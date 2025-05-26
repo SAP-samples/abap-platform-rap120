@@ -51,14 +51,14 @@ In this exercise, you will now define and implement a determination called **`ca
    1. In the the behavior definiton ![bdef icon](images/adt_bdef.png)**`ZR_TRAVEL###`**, define the fields **`TotalPrice`** and **`CurrencyCode`** fields as readonly
 
       ```ABAP
-      managed implementation in class ZBP_R_TRAVEL003 unique;
+      managed implementation in class ZBP_R_TRAVEL### unique;
       strict ( 2 );
       with draft;
       extensible;
-      define behavior for ZR_TRAVEL003 alias Travel
-      persistent table ZTRAVEL003
+      define behavior for ZR_TRAVEL### alias Travel
+      persistent table ZTRAVEL###
       extensible
-      draft table ZTRAVEL_D003
+      draft table ZTRAVEL_D###
       etag master LocalLastChangedAt
       lock master total etag LastChangedAt
       authorization master( global )
@@ -138,7 +138,7 @@ In this exercise, you will now define and implement a determination called **`ca
    ```ABAP
      METHOD calcTotalTravelPrice.
      "1) Read Travel and Booking entities
-      READ ENTITIES OF zr_travel003 IN LOCAL MODE
+      READ ENTITIES OF zr_travel### IN LOCAL MODE
         ENTITY travel
         ALL FIELDS WITH CORRESPONDING #( keys )
         RESULT DATA(lt_travel)
@@ -155,7 +155,7 @@ In this exercise, you will now define and implement a determination called **`ca
                                                                 NEXT sum     = sum + booking-FlightPrice ).
       "3)Update the total price of the Travel
       IF lv_total_price <> total_price.
-        MODIFY ENTITIES OF zr_travel003 IN LOCAL MODE
+        MODIFY ENTITIES OF zr_travel### IN LOCAL MODE
         ENTITY travel
           UPDATE
             FIELDS ( TotalPrice CurrencyCode )
@@ -230,7 +230,7 @@ In this exercise, you will now define and implement a determination called **`ca
 
     METHOD calcTotalTravelPrice.
      "1) Read Travel and Booking entities
-      READ ENTITIES OF zr_travel003 IN LOCAL MODE
+      READ ENTITIES OF zr_travel### IN LOCAL MODE
         ENTITY travel
         ALL FIELDS WITH CORRESPONDING #( keys )
         RESULT DATA(lt_travel)
@@ -247,7 +247,7 @@ In this exercise, you will now define and implement a determination called **`ca
                                                                 NEXT sum     = sum + booking-FlightPrice ).
       "3)Update the total price of the Travel
       IF lv_total_price <> total_price.
-        MODIFY ENTITIES OF zr_travel003 IN LOCAL MODE
+        MODIFY ENTITIES OF zr_travel### IN LOCAL MODE
         ENTITY travel
           UPDATE
             FIELDS ( TotalPrice CurrencyCode )
