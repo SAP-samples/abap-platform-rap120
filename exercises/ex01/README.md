@@ -94,6 +94,7 @@ First, you'll create an ABAP package, a database table, and an ABAP class to pop
       > Please, make sure that the **`CurrencyCode`** is set for the **`DiscountedFlightPrice`**
       >
       > ![](/exercises/ex01/images/rap120_2505_ex125.png)
+      > ![](/exercises/ex01/images/rap120_2505_ex126.png)
 
    6. ⚠️⚠️⚠️ Before continuing and generating the RAP business object please make sure that you have added the two fields called **`Destination`** and **`DiscountedFlightPrice`** to your data model.
       If you have not added the fields, please go back to **Step 4** before continuing with the generation of the RAP BO.
