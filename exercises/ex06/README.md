@@ -153,11 +153,11 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
 
   1. Go to the behavior definiton ![bdef icon](images/adt_bdef.png)**`ZR_TRAVEL###`**  
   
-  Add the **`Description`** as mandatory field:
+  Add the **`Destination`** as mandatory field:
 
   ```BDL
     field ( mandatory : create )
-      Description;
+      Destination;
   ```  
 
   Then, define the **`setDescription`** determination:
