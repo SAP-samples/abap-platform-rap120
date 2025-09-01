@@ -20,9 +20,11 @@ The [Reuse Tool](https://reuse.software/) must be used for your samples project.
 Please edit this file as it is the primary description file for your project. You can find some placeholder titles for sections below.
 -->
 
-# RAP120 - Build SAP Fiori Apps with ABAP Cloud and Joule for developers
 
-<!-- Please include descriptive title -->
+# RAP120 - Build SAP Fiori Apps with ABAP Cloud and SAP Joule for developers
+
+<!-- Please include descriptive title test -->
+
 
 <!--- Register repository https://api.reuse.software/register, then add REUSE badge:
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/REPO-NAME)](https://api.reuse.software/info/github.com/SAP-samples/REPO-NAME)
@@ -31,7 +33,7 @@ Please edit this file as it is the primary description file for your project. Yo
 ## Description
 <!-- Please include SEO-friendly description -->
 
-This repository contains the material for the hands-on session **RAP120 - Build SAP Fiori Apps with ABAP Cloud and Joule for developers**💎
+This repository contains the material for the hands-on session **RAP120 - Build SAP Fiori Apps with ABAP Cloud and SAP Joule for developers**💎
 
 **Table of Content**
 - [Requirements for attending this workshop](#requirements-for-attending-this-workshop)
@@ -71,7 +73,7 @@ This repository contains the material for the hands-on session **RAP120 - Build 
 
 <!-- #### Current Business Scenario -->
 
-> In this hands-on session, you will learn how to use ABAP capabilities in Joule for Developers, including predictive code completion, unit test generation 
+> In this hands-on session, you will learn how to use ABAP capabilities in SAP Joule for Developers, including predictive code completion, unit test generation 
 > for ABAP CDS and ABAP code, and code explanation to speed up your development with ABAP Cloud.
 
 <details>
@@ -116,7 +118,7 @@ Follow these steps to build a SAP Fiori App with Joule in ABAP Cloud
 ## Recordings
 [^Top of page](#)
 
-▶️ Watch the replay of the virtual **TechEd 2024 Session: Explore Joule for developers, with ABAP AI capabilities**.
+▶️ Watch the replay of the virtual **TechEd 2024 Session: Explore SAP Joule for developers, with ABAP AI capabilities**.
 
 [<img src="teched-img.png" alt="TechEd" width="60%">](https://www.youtube.com/watch?v=r1aXK21e6pk)
 

@@ -7,7 +7,7 @@
 In the exercises 1-5, you've created a SAP Fiori elements based _Travel_ app to process travel data. In the previous exercise, you've defined and implemented a determination called **`setInitialTravelStatus`**, which is used to set a default value for the overall status of a _Travel_ entity instance (_see [Exercise 5](../ex05/README.md)_).  
 > ℹ️ **Important note**: To complete the present exercise, you must have completed at least _[Exercise 1](../ex01/README.md)_. The exercises 2-5 are optional.
 
-In this exercise, you will learn how to use the ABAP AI SDK powered by Intelligent Scenario Lifecycle Management (ISLM). It is the official client to consume large language models in ABAP. You will also learn how to instantiate the ABAP AI SDK and call it within a determination named **`setDescription`** to integrate AI capabilities into your RAP business object.
+In this exercise, you will learn how to use the ABAP AI SDK powered by Intelligent Scenario Lifecycle Management (ISLM). It is the official client to consume large language models in ABAP. You will also learn how to instantiate the ABAP AI SDK and call it within a determination named **`setSightseeingTips`** to integrate AI capabilities into your RAP business object.
 
 #### About ABAP AI SDK powered by Intelligent Scenario Lifecycle Management (ISLM)
 <details>
@@ -27,7 +27,7 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
 ### Exercises
 
 - [6.1 - Define and implement new method in ABAP helper class](#exercise-61-define-and-implement-a-new-method-in-the-abap-helper-class)
-- [6.2 - Define and implement the determination](#exercise-62-define-and-implement-the-determination)
+- [6.2 - Define and implement the determination with Predict RAP Business Logic](#exercise-62-define-and-implement-the-determination-with-Predict-RAP-Business-Logic)
 - [6.3 - Preview and test the enhanced Travel App](#exercise-63-preview-and-test-the-enhanced-travel-app)
 - [Summary](#summary)  
 
@@ -36,18 +36,12 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
 ## Exercise 6.1: Define and implement a new method in the ABAP helper class
 [^Top of page](#Introduction)
 
->  Define and implement a new method named **`generate_description`** in the ABAP helper class ![class](images/adt_class.png)**`ZCL_TRAVEL_HELPER_###`**.
+>  Define and implement a new method named **`get_sightseeing_tips`** in the ABAP helper class ![class](images/adt_class.png)**`ZCL_TRAVEL_HELPER_###`**.
 
  <details>
   <summary>🔵 Click to expand!</summary>
 
-  1. Go to the ABAP class ![class](images/adt_class.png)**`ZCL_TRAVEL_HELPER_###`** and define the **`generate_description`** method 
-
-     ```ABAP
-       METHODS: generate_description IMPORTING iv_city TYPE /dmo/city RETURNING VALUE(rv_description) TYPE /dmo/description.
-     ```
-
-  2. Replace the implementation of the method **`generate_description`** with the source code provided below.
+  1. Replace the implementation of the method **`get_sightseeing_tips`** with the source code provided below.
 
       > ⚠️ **Please note** ⚠️
       > - If you're using your own system, please ensure that the [ABAP AI SDK powered by ISLM setup](https://help.sap.com/docs/abap-ai/generative-ai-in-abap-cloud/set-up-abap-ai-sdk-powered-by-intelligent-scenario-lifecycle-management?locale=en-US) is correct and then [create an intelligent scenario and an intelligent scenario model](https://help.sap.com/docs/abap-ai/generative-ai-in-abap-cloud/creating-intelligent-scenario-and-intelligent-scenario-model?locale=en-US).
@@ -55,25 +49,33 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
 
       
      ```ABAP
-           METHOD generate_description.
+         METHOD get_sightseeing_tips.
+            " We will call an LLM to generate the sightseeing tips for a given city using the ABAP AI SDK powered by ISLM
 
-           TRY.
-           "If you're using your own system, replace ZINTS_RAP120 with your own ISLM Scenario '
-             FINAL(api) = cl_aic_islm_compl_api_factory=>get( )->create_instance( islm_scenario = 'ZINTS_RAP120' ).
-           CATCH cx_aic_api_factory INTO DATA(lx_api).
-            rv_description = ''.
-           ENDTRY.
 
-           TRY.
-             DATA(messages) = api->create_message_container( ).
-             messages->set_system_role( 'You are a travel agent expert' ).
-             messages->add_user_message( 'Generate a travel description for ' && iv_city && '.It should be less than 100 characters' ).
-             rv_description = api->execute_for_messages( messages )->get_completion( ).
-           CATCH cx_aic_completion_api INTO DATA(lx_completion).
-             rv_description = ''.
-           ENDTRY.
+              DATA(system_prompt) = | You support by giving sightseeing tips for a given city. | &&
+                                    | Write a short summary of the 10 top most sightseeing tips | &&
+                                    | using a brief listing without a caption | &&
+                                    | It should be less 1000 characters. |.
+              " User specific promt, including the city selection from the UI
+              DATA(user_prompt)   = |The city is { iv_city }.|.
 
-         ENDMETHOD.
+              " create an instance of the ABAP AI SDK using the get method of cl_aic_islm_compl_api_factory and islm_scenario 'ZDEMO_GPT4O'
+              TRY.
+                FINAL(api) =  cl_aic_islm_compl_api_factory=>get( )->create_instance( islm_scenario = '' ).
+              CATCH cx_aic_api_factory INTO DATA(lx_api).
+                rv_sightseeing_tips = ''.
+              ENDTRY.
+
+              TRY.
+                FINAL(message_container) = api->create_message_container( ).
+                message_container->set_system_role( system_prompt ).
+                message_container->add_user_message( user_prompt ).
+                rv_sightseeing_tips = api->execute_for_messages( message_container )->get_completion( ).
+              CATCH cx_aic_completion_api INTO DATA(lx_completion).
+                rv_sightseeing_tips = ''.
+              ENDTRY.
+          ENDMETHOD.
      ```
 
      The complete updated source code in the class should now look like this:   
@@ -87,7 +89,7 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
          PUBLIC SECTION.
            METHODS: validate_customer IMPORTING iv_customer_id TYPE /dmo/customer_id RETURNING VALUE(rv_exists) TYPE abap_bool.
            METHODS: get_booking_status IMPORTING iv_status TYPE /dmo/booking_status_text RETURNING VALUE(rv_status) TYPE /dmo/booking_status.
-           METHODS: generate_description IMPORTING iv_city TYPE /dmo/city RETURNING VALUE(rv_description) TYPE /dmo/description
+           METHODS: get_sightseeing_tips IMPORTING iv_city TYPE /dmo/city RETURNING VALUE(rv_sightseeing_tips) TYPE /dmo/description.
          PROTECTED SECTION.
          PRIVATE SECTION.
        ENDCLASS.
@@ -117,24 +119,32 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
            ENDCASE.
          ENDMETHOD.
 
-         METHOD generate_description.
-           "This method will be called in the determination setDescription
-           TRY.
-           "If you're using your own system, replace ZINTS_RAP120 with your own ISLM Scenario '
-             FINAL(api) = cl_aic_islm_compl_api_factory=>get( )->create_instance( islm_scenario = 'ZINTS_RAP120' ).
-           CATCH cx_aic_api_factory INTO DATA(lx_api).
-            rv_description = ''.
-           ENDTRY.
+         METHOD get_sightseeing_tips.
+            " We will call an LLM to generate the sightseeing tips for a given city using the ABAP AI SDK powered by ISLM
 
-           TRY.
-             DATA(messages) = api->create_message_container( ).
-             messages->set_system_role( 'You are a travel agent expert' ).
-             messages->add_user_message( 'Generate a travel description for ' && iv_city && '.It should be less than 100 characters' ).
-             rv_description = api->execute_for_messages( messages )->get_completion( ).
-           CATCH cx_aic_completion_api INTO DATA(lx_completion).
-             rv_description = ''.
-           ENDTRY.
-         ENDMETHOD.
+              DATA(system_prompt) = | You support by giving sightseeing tips for a given city. | &&
+                                    | Write a short summary of the 10 top most sightseeing tips | &&
+                                    | using a brief listing without a caption | &&
+                                    | It should be less 1000 characters. |.
+              " User specific prompt, including the city selection from the UI
+              DATA(user_prompt)   = |The city is { iv_city }.|.
+
+              " create an instance of the ABAP AI SDK powered by ISLM
+              TRY.
+                FINAL(api) =  cl_aic_islm_compl_api_factory=>get( )->create_instance( islm_scenario = '' ).
+              CATCH cx_aic_api_factory INTO DATA(lx_api).
+                rv_sightseeing_tips = ''.
+              ENDTRY.
+
+              TRY.
+                FINAL(message_container) = api->create_message_container( ).
+                message_container->set_system_role( system_prompt ).
+                message_container->add_user_message( user_prompt ).
+                rv_sightseeing_tips = api->execute_for_messages( message_container )->get_completion( ).
+              CATCH cx_aic_completion_api INTO DATA(lx_completion).
+                rv_sightseeing_tips = ''.
+              ENDTRY.
+          ENDMETHOD.
 
        ENDCLASS.
      ```
@@ -143,60 +153,67 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
 </details>
 
 
-## Exercise 6.2: Define and implement the determination
+## Exercise 6.2: Define and implement the determination with Predict RAP Business Logic💎
 [^Top of page](#Introduction)
 
-> Define the determination **`setDescription`** in the behavior definition ![behaviordefinition](images/adt_bdef.png)**`ZR_TRAVEL###`** and implement it in the behavior implementation class, aka behavior pool, ![class](images/adt_class.png)**`ZBP_R_TRAVEL###`**.  
+> Define the determination **`setSightseeingTips`** in the behavior definition ![behaviordefinition](images/adt_bdef.png)**`ZR_TRAVEL###`** and implement it in the behavior implementation class, aka behavior pool, ![class](images/adt_class.png)**`ZBP_R_TRAVEL###`**.  
 
  <details>
   <summary>🔵 Click to expand!</summary>
 
-  1. Go to the behavior definiton ![bdef icon](images/adt_bdef.png)**`ZR_TRAVEL###`**  
-  
-  Add the **`Destination`** as mandatory field:
+  1. Define the **`setSightseeingTips`** determination:
 
   ```BDL
-    field ( mandatory : create )
-      Destination;
-  ```  
-
-  Then, define the **`setDescription`** determination:
-
-  ```BDL
-    determination setDescription on modify { create; }
+    determination setSightseeingTips on modify { create; }
   ```
  
   2. Save![save icon](images/adt_save.png) and activate![activate icon](images/adt_activate.png) the changes in ![bdef icon](images/adt_bdef.png)**`ZR_TRAVEL###`**.
  
-  3. Declare the required method in behavior implementation class [](images/adt_class.png) **`ZBP_R_TRAVEL###`** using ADT Quick Fix (**Ctrl + 1**).
+  3. Declare the required method in behavior implementation class [](images/adt_class.png) **`ZBP_R_TRAVEL###`** using ADT Quick Fix *Ctrl/Cmd + 1*.
  
   4. Save![save icon](images/adt_save.png) and activate![activate icon](images/adt_activate.png) the changes in ![class icon](images/adt_class.png)**`ZBP_R_TRAVEL###`**. 
- 
-  5. Please complete the **`setDescription`** implementation by incorporating the code provided below.
+
+  5. Let's implement the determination **`setSightseeingTips`** using **Predict RAP Business Logic 💎**. In your implementaion class ![class](images/adt_class.png)**`ZBP_R_TRAVEL###`** , position the cursor on **`setSightseeingTips`** method implementation.
+
+  6. Enter the following the description in the **Method Description** section. Then, press **Run**.
+   
+   Don't forget to replace the suffix placeholder **`###`** with your chosen or assigned group ID/suffix.
+   
+   ```
+    Instantiate a helper class zcl_travel_helper_###. Read the SightseeingTips field from the Travel entity 
+    Filter out all entries where SightseeingTips is already filled.
+    Use get_sightseeing_tips to generate sightseeing tips based on the Destination.
+    Update the SightseeingTips field with this generated value
+
+   ```
+
+  7. Your code should look something like this:
 
      Don't forget to replace the suffix placeholder **`###`** with your chosen or assigned group ID/suffix.
 
      ```ABAP
-       METHOD setDescription.
+       METHOD setSightseeingTips.
 
-         DATA(lo_travel_helper) = NEW zcl_travel_helper_###(  ).
+        DATA(lo_travel_helper) = NEW zcl_travel_helper_###( ).
 
-         READ ENTITIES OF ZR_TRAVEL### IN LOCAL MODE
-         ENTITY Travel
-           FIELDS ( Description ) WITH CORRESPONDING #( keys )
-           RESULT DATA(lt_travel).
+        READ ENTITIES OF ZR_TRAVEL### IN LOCAL MODE
+          ENTITY Travel
+            FIELDS ( Destination SightseeingTips )
+            WITH CORRESPONDING #( keys )
+          RESULT DATA(lt_travels).
 
-         DELETE lt_travel WHERE Description IS NOT INITIAL.
-         CHECK lt_travel IS NOT INITIAL.
-
-         MODIFY ENTITIES OF ZR_TRAVEL### IN LOCAL MODE
-           ENTITY Travel
-             UPDATE FIELDS ( Description )
-             WITH VALUE #( FOR key IN lt_travel ( %tky   = key-%tky
-                                                  Description = lo_travel_helper->generate_description(  key-Destination )  ) )
-           REPORTED DATA(update_reported).
-
-         reported = CORRESPONDING #( DEEP update_reported ).
+        LOOP AT lt_travels INTO DATA(ls_travel).
+          IF ls_travel-SightseeingTips IS INITIAL.
+            DATA(lv_tips) = lo_travel_helper->get_sightseeing_tips( ls_travel-Destination ).
+            MODIFY ENTITIES OF ZR_TRAVEL### IN LOCAL MODE
+              ENTITY Travel
+                UPDATE FIELDS ( SightseeingTips )
+                WITH VALUE #(
+                  ( %tky = ls_travel-%tky
+                    SightseeingTips = lv_tips )
+                ).
+          ENDIF.
+        ENDLOOP.
        ENDMETHOD.
      ```
 
@@ -214,8 +231,8 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
                    IMPORTING keys FOR Travel~validateCustomer,
              calcTotalTravelPrice FOR DETERMINE ON SAVE
                    IMPORTING keys FOR Travel~calcTotalTravelPrice,
-             setDescription FOR DETERMINE ON MODIFY
-                   IMPORTING keys FOR Travel~setDescription.
+             setSightseeingTips FOR DETERMINE ON MODIFY
+                   IMPORTING keys FOR Travel~setSightseeingTips.
        ENDCLASS.
 
        CLASS LHC_ZR_TRAVEL### IMPLEMENTATION.
@@ -223,94 +240,88 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
          ENDMETHOD.
 
          METHOD validateCustomer.
-           "ABAP EML to read the field CustomerId from CDS view ZR_TRAVEL###
-             READ ENTITIES OF ZR_TRAVEL### IN LOCAL MODE
-                 ENTITY Travel
-                   FIELDS ( CustomerID )
-                   WITH CORRESPONDING #( keys )
-                 RESULT DATA(lt_travel).
+          DATA(lo_travel_helper) = NEW zcl_travel_helper_###( ).
 
+          READ ENTITIES OF zr_travel### IN LOCAL MODE
+            ENTITY Travel
+              FIELDS ( CustomerID )
+              WITH CORRESPONDING #( keys )
+            RESULT DATA(lt_travel).
 
-               LOOP AT lt_travel INTO DATA(travel).
-                 DATA(lo_travel_helper) = NEW zcl_travel_helper_###(  ).
-                 DATA(customer_id) = travel-CustomerID.
-
-                 IF customer_id IS INITIAL.
-                     APPEND VALUE #( %tky = travel-%tky ) TO failed-travel.
-                     APPEND VALUE #( %tky                = travel-%tky
-                                     %state_area         = 'VALIDATE_CUSTOMER'
-                                     %msg                = NEW /dmo/cm_flight_messages( textid   = /dmo/cm_flight_messages=>enter_customer_id
-                                                                                       severity = if_abap_behv_message=>severity-error )
-                                     %element-CustomerID = if_abap_behv=>mk-on
-                                   ) TO reported-travel.
-
-
-                 ELSEIF lo_travel_helper->validate_customer( customer_id ) = abap_false.
-
-                 APPEND VALUE #( %tky = travel-%tky ) TO failed-travel.
-                 APPEND VALUE #( %tky                = travel-%tky
-                                 %state_area         = 'VALIDATE_CUSTOMER'
-                                 %msg                = NEW /dmo/cm_flight_messages( textid      = /dmo/cm_flight_messages=>customer_unkown
-                                                                                   customer_id = travel-CustomerId
-                                                                                   severity    = if_abap_behv_message=>severity-error )
-                                 %element-CustomerID = if_abap_behv=>mk-on
-                                 ) TO reported-travel.
-                 ENDIF.
-               ENDLOOP.
+          LOOP AT lt_travel INTO DATA(ls_travel).
+            IF ls_travel-CustomerID IS INITIAL OR
+              lo_travel_helper->validate_customer( ls_travel-CustomerID ) = abap_false.
+              APPEND VALUE #( %tky = ls_travel-%tky ) TO failed-Travel.
+              APPEND VALUE #(
+                  %tky        = ls_travel-%tky
+                  %state_area = 'Validation'
+                  %msg        = new_message_with_text(
+                                  text     = 'Invalid or missing CustomerID'
+                                  severity = if_abap_behv_message=>severity-error
+                                )
+              ) TO reported-Travel.
+            ENDIF.
+          ENDLOOP.
          ENDMETHOD.
 
          METHOD calcTotalTravelPrice.
-          "1) Read Travel and Booking entities
-            READ ENTITIES OF zr_travel### IN LOCAL MODE
-              ENTITY travel
-              ALL FIELDS WITH CORRESPONDING #( keys )
-              RESULT DATA(lt_travel)
-            ENTITY travel BY \_Booking
-              ALL FIELDS WITH CORRESPONDING #( keys )
-            RESULT DATA(lt_booking).
+           "1) Read Travel and Booking entities
+          READ ENTITIES OF zr_travel### IN LOCAL MODE
+            ENTITY travel
+            ALL FIELDS WITH CORRESPONDING #( keys )
+            RESULT DATA(lt_travel)
+          ENTITY travel BY \_Booking
+          ALL FIELDS WITH CORRESPONDING #( keys )
+          RESULT DATA(lt_booking).
 
-            DATA(lv_total_price) = VALUE #( lt_travel[ 1 ]-TotalPrice OPTIONAL ).
-            DATA(lv_currency_code) = VALUE #( lt_booking[ 1 ]-CurrencyCode OPTIONAL ).
+          "Let's add this
+          DATA(current_total_price) = VALUE #( lt_travel[ 1 ]-TotalPrice OPTIONAL ).
+          DATA(booking_fee) = VALUE #( lt_travel[ 1 ]-BookingFee OPTIONAL ).
+          DATA(currency_code) = VALUE #( lt_booking[ 1 ]-CurrencyCode OPTIONAL ).
 
-            "2)Calculate the total price. Use reduce operator
-            DATA(total_price) = REDUCE /dmo/total_price( INIT sum TYPE /dmo/total_price
-                                                                      FOR booking IN lt_booking
-                                                                      NEXT sum     = sum + booking-FlightPrice ).
-            "3)Update the total price of the Travel
-            IF lv_total_price <> total_price.
-              MODIFY ENTITIES OF zr_travel### IN LOCAL MODE
-              ENTITY travel
-                UPDATE
-                  FIELDS ( TotalPrice CurrencyCode )
-                  WITH VALUE #( FOR key IN keys
-                                    ( %tky            = key-%tky
-                                      TotalPrice      = total_price
-                                      CurrencyCode    = lv_currency_code ) )
-              REPORTED DATA(reported_modify).
-            ENDIF.
+          "2)Calculate the total flight price of the bookings using reduce operator in calculated_total_price variable
+          DATA(calculated_total_price) = REDUCE i( INIT sum TYPE i FOR booking IN lt_booking NEXT sum += booking-FlightPrice ).
+
+          "Let's add this
+          calculated_total_price += booking_fee.
+
+          "3)Update the total price of the Travel
+          IF current_total_price <> calculated_total_price.
+            MODIFY ENTITIES OF zr_travel### IN LOCAL MODE
+            ENTITY travel
+              UPDATE
+                FIELDS ( TotalPrice CurrencyCode )
+                WITH VALUE #( FOR key IN keys
+                                  ( %tky            = key-%tky
+                                    TotalPrice      = calculated_total_price
+                                    CurrencyCode    = currency_code ) )
+            REPORTED DATA(reported_modify).
+          ENDIF.
          ENDMETHOD.
 
-         METHOD setDescription.
+       METHOD setSightseeingTips.
 
-           DATA(lo_travel_helper) = NEW zcl_travel_helper_###(  ).
+        DATA(lo_travel_helper) = NEW zcl_travel_helper_###( ).
 
-           READ ENTITIES OF ZR_TRAVEL### IN LOCAL MODE
-           ENTITY Travel
-             FIELDS ( Description ) WITH CORRESPONDING #( keys )
-             RESULT DATA(lt_travel).
+        READ ENTITIES OF ZR_TRAVEL### IN LOCAL MODE
+          ENTITY Travel
+            FIELDS ( Destination SightseeingTips )
+            WITH CORRESPONDING #( keys )
+          RESULT DATA(lt_travels).
 
-           DELETE lt_travel WHERE Description IS NOT INITIAL.
-           CHECK lt_travel IS NOT INITIAL.
-
-           MODIFY ENTITIES OF ZR_TRAVEL### IN LOCAL MODE
-             ENTITY Travel
-               UPDATE FIELDS ( Description )
-               WITH VALUE #( FOR key IN lt_travel ( %tky   = key-%tky
-                                                   Description = lo_travel_helper->generate_description( key-Destination )  ) )
-             REPORTED DATA(update_reported).
-
-           reported = CORRESPONDING #( DEEP update_reported ).
-         ENDMETHOD.
+        LOOP AT lt_travels INTO DATA(ls_travel).
+          IF ls_travel-SightseeingTips IS INITIAL.
+            DATA(lv_tips) = lo_travel_helper->get_sightseeing_tips( ls_travel-Destination ).
+            MODIFY ENTITIES OF ZR_TRAVEL### IN LOCAL MODE
+              ENTITY Travel
+                UPDATE FIELDS ( SightseeingTips )
+                WITH VALUE #(
+                  ( %tky = ls_travel-%tky
+                    SightseeingTips = lv_tips )
+                ).
+          ENDIF.
+        ENDLOOP.
+       ENDMETHOD.
 
        ENDCLASS.
      ```
@@ -318,7 +329,7 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
   6. Save![save icon](images/adt_save.png) and activate![activate icon](images/adt_activate.png) the changes in ![class icon](images/adt_class.png)**`ZBP_R_TRAVEL###`**.  
 
   
-  ![](/exercises/ex06/images/rap120_2505_ex62.gif)
+  ![](/exercises/ex06/images/rap120_ex62.gif)
 
 </details>
 
@@ -333,9 +344,9 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
  
   2. Create a new _Travel_ instance. 
  
-     The **`Description`** field should now be set automatically by the determination **`setDescription`** that you've just implemented. It means that the initial description of the created entity should now be set coming from the LLM output through the ABAP AI SDK powered by ISLM. 
+     The **`SightseeingTips`** field should now be set automatically by the determination **`setSightseeingTips`** that you've just implemented. This means that the initial sightseeing tips for the new Travel will be provided from the LLM output via the ABAP AI SDK powered by ISLM.
 
- ![](/exercises/ex06/images/rap120_2505_ex63.gif)
+ ![](/exercises/ex06/images/rap120_ex63.gif)
     
 </details>
 
@@ -344,12 +355,12 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
 [^Top of page](#Introduction)
 
 Now that you've... 
-- defined and implemented a determination
-- enhanced the determination using ABAP AI SDK
+- defined and implemented a determination using **Predict RAP Business Logic 💎**
+- enhanced the determination using **ABAP AI SDK powered by ISLM**
 
 Thank you for attending this workshop! 🎉🎉🎉
 
-**Optionally**, you can continue with the next exercise – **[Exercise 7: Try out the ABAP Cloud Generator: Transactional App from Scratch](../ex07/README.md)**
+As **optional**, you can continue with the next exercise – **[Exercise 7: Try out the ABAP Cloud Generator: Transactional App from Scratch](../ex07/README.md)**
 
 [Home - RAP120](../../README.md)
 
