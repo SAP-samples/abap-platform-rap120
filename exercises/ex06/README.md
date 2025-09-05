@@ -4,8 +4,9 @@
 
 ## Introduction
 
-In the exercises 1-5, you've created a SAP Fiori elements based _Travel_ app to process travel data. In the previous exercise, you've defined and implemented a determination called **`setInitialTravelStatus`**, which is used to set a default value for the overall status of a _Travel_ entity instance (_see [Exercise 5](../ex05/README.md)_).  
-> ℹ️ **Important note**: To complete the present exercise, you must have completed at least _[Exercise 1](../ex01/README.md)_. The exercises 2-5 are optional.
+In the exercises 1-5, you've created a SAP Fiori elements based _Travel_ app to process travel data.
+
+> ℹ️ **Important note**: To complete the present exercise, you must have completed at least _[Exercise 1](../ex01/README.md)_. 
 
 In this exercise, you will learn how to use the ABAP AI SDK powered by Intelligent Scenario Lifecycle Management (ISLM). It is the official client to consume large language models in ABAP. You will also learn how to instantiate the ABAP AI SDK and call it within a determination named **`setSightseeingTips`** to integrate AI capabilities into your RAP business object.
 
@@ -98,14 +99,11 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
        CLASS zcl_travel_helper_### IMPLEMENTATION. 
 
          METHOD validate_customer.
-           rv_exists = abap_false.
-           SELECT FROM /dmo/customer FIELDS customer_id
-               WHERE customer_id = @iv_customer_id
-           INTO TABLE @DATA(customers).
-
-           IF customers IS NOT INITIAL.
-             rv_exists = abap_true.
-           ENDIF.
+          SELECT SINGLE
+            FROM /dmo/customer
+            FIELDS @abap_true AS line_exists
+            WHERE customer_id = @iv_customer_id
+            INTO @rv_exists.
          ENDMETHOD.
 
          METHOD get_booking_status.

@@ -48,7 +48,7 @@ First, you'll create an ABAP package, a database table, and an ABAP class to pop
        - Superpackage: **`ZLOCAL`**
        
    3. Check that the Package Type is _Development_ and Software Component _ZLOCAL_. Click on **Next >**
-   4. In the transport request step, maintain the _Request Description_ (e.g. _**RAP120 Package ###**_) if needed, and click on **Finish**.
+   4. In the Transport Request step, maintain the _Request Description_ (e.g. _**RAP120 Package ###**_), and click on **Finish**.
       
       <!-- <img src="images/p1c.png" alt="table" width="50%"> -->
 
@@ -631,14 +631,11 @@ First, you'll create an ABAP package, a database table, and an ABAP class to pop
      CLASS zcl_travel_helper_### IMPLEMENTATION.
 
       METHOD validate_customer.
-        rv_exists = abap_false.
-        SELECT FROM /dmo/customer FIELDS customer_id
+         SELECT SINGLE
+            FROM /dmo/customer
+            FIELDS @abap_true AS line_exists
             WHERE customer_id = @iv_customer_id
-        INTO TABLE @DATA(customers).
-
-        IF customers IS NOT INITIAL.
-          rv_exists = abap_true.
-        ENDIF.
+            INTO @rv_exists.
       ENDMETHOD.
 
       METHOD get_booking_status.

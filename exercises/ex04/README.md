@@ -111,7 +111,7 @@ A validation is implicitly invoked by the business object’s framework if the t
         update;
         delete;
 
-        // Add determination validateCustomer
+        // Add validation validateCustomer
         validation validateCustomer on save { create; field CustomerID; }
 
         draft action Activate optimized;
