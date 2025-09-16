@@ -61,9 +61,9 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
               " User specific promt, including the city selection from the UI
               DATA(user_prompt)   = |The city is { iv_city }.|.
 
-              " create an instance of the ABAP AI SDK using the get method of cl_aic_islm_compl_api_factory and islm_scenario 'ZDEMO_GPT4O'
+              " create an instance of the ABAP AI SDK using the get method of cl_aic_islm_compl_api_factory and islm_scenario 'ZINTS_RAP120'
               TRY.
-                FINAL(api) =  cl_aic_islm_compl_api_factory=>get( )->create_instance( islm_scenario = '' ).
+                FINAL(api) =  cl_aic_islm_compl_api_factory=>get( )->create_instance( islm_scenario = 'ZINTS_RAP120' ).
               CATCH cx_aic_api_factory INTO DATA(lx_api).
                 rv_sightseeing_tips = ''.
               ENDTRY.
@@ -129,7 +129,7 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
 
               " create an instance of the ABAP AI SDK powered by ISLM
               TRY.
-                FINAL(api) =  cl_aic_islm_compl_api_factory=>get( )->create_instance( islm_scenario = '' ).
+                FINAL(api) =  cl_aic_islm_compl_api_factory=>get( )->create_instance( islm_scenario = 'ZINTS_RAP120' ).
               CATCH cx_aic_api_factory INTO DATA(lx_api).
                 rv_sightseeing_tips = ''.
               ENDTRY.
