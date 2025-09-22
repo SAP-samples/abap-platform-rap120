@@ -52,7 +52,7 @@ This repository contains the material for the hands-on session **RAP120 - Build 
 > 
 > The appropriate flavor of the [ABAP Flight Reference Scenario](https://github.com/SAP-samples/abap-platform-refscen-flight) must be imported into the relevant system.  
 > 
-> (*) SAP BTP ABAP environment and SAP S/4HANA Cloud Public Edition - as of release 2505 - are currently supported.
+> (*) SAP BTP ABAP environment and SAP S/4HANA Cloud Public Edition are currently supported.
 >
 >> #### ⚠ Exception regarding SAP-led events, such as "ABAP Developer Day" and "SAP CodeJam"   
 >> → A dedicated ABAP system for the hands-on workshop participants will be provided.   
