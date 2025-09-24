@@ -178,10 +178,10 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
    Don't forget to replace the suffix placeholder **`###`** with your chosen or assigned group ID/suffix.
    
    ```
-    Instantiate a helper class zcl_travel_helper_###. Read the SightseeingTips field from the Travel entity 
-    Filter out all entries where SightseeingTips is already filled.
-    Use get_sightseeing_tips to generate sightseeing tips based on the Destination.
-    Update the SightseeingTips field with this generated value
+    Instantiate a helper class zcl_travel_helper_###. 
+    Read the SightseeingsTips field from the Travel entity. 
+    Check if SightseeingsTips is empty and then call get_sightseeing_tips to generate sightseeing tips based on the Destination field.
+    Update the SightseeingsTips field with the generated value.
 
    ```
 
