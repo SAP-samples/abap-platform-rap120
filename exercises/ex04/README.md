@@ -11,7 +11,7 @@ In this exercise, you will define and implement a backend validation called **`v
 ### Exercises
 
 - [4.1 - Define and implement the validation](#exercise-41-define-and-implement-the-validation)
-- [4.2 - Enhance validation with Joule Predictive Code Completion](#exercise-42-enhance-validation-with-joule-predictive-code-completion)
+- [4.2 -  Enhance validation with RAP Predict Business Logic](#exercise-42-Enhance-validation-with-RAP-Predict-Business-Logic)
 - [4.3 - Preview and test the enhanced Travel App](#exercise-43-preview-and-test-the-enhanced-travel-app)
 - [Summary & Next Exercise](#summary--next-exercise)
 

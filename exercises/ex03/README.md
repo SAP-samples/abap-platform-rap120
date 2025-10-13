@@ -65,7 +65,7 @@ In this exercise, you will now analyze the ABAP helper class ![class](images/adt
    
    5. Review the generated code in Joule copilot and press **Copy**. 
  
-   6. Switch to the **Test Clasess** tab and replace the current source code with the one copied from the Joule view.
+   6. Switch to the **Test Classes** tab and replace the current source code with the one copied from the Joule view.
 
   ![](/exercises/ex03/images/rap120_ex32.gif)
 
@@ -83,13 +83,13 @@ In this exercise, you will now analyze the ABAP helper class ![class](images/adt
   <summary>🔵 Click to expand!</summary>
   <br>
 
-  1. Add the method interface **`test_validate_customer_success`** in the definition section:
+  1. Add the method interface **`validate_customer_success`** in the definition section:
 
      ```ABAP
-     test_validate_customer_success FOR TESTING. 
+      validate_customer_success FOR TESTING. 
      ```
 
-  2. Add **`test_validate_customer_success`** implementation using ADT Quick Fix. 
+  2. Add **`validate_customer_success`** implementation using ADT Quick Fix. 
  
   3. Press **Enter**. Joule will suggest the unit test code. 
  
@@ -123,7 +123,7 @@ In this exercise, you will now analyze the ABAP helper class ![class](images/adt
            "! Test helper method
            configure_db_testdoubles,
 
-           test_validate_customer_success for testing.
+           validate_customer_success for testing.
 
      ENDCLASS.
 
@@ -157,8 +157,8 @@ In this exercise, you will now analyze the ABAP helper class ![class](images/adt
          environment->insert_test_data( customer_stub_data ).
        ENDMETHOD.
 
-       METHOD test_validate_customer_success.
-         DATA(cut) = NEW zcl_travel_helper_000( ).
+       METHOD validate_customer_success.
+         DATA(cut) = NEW zcl_travel_helper_###( ).
          DATA(result) = cut->validate_customer( '000001' ).
 
          cl_abap_unit_assert=>assert_equals( exp = abap_true act = result ).
@@ -167,7 +167,7 @@ In this exercise, you will now analyze the ABAP helper class ![class](images/adt
      ENDCLASS.
      ```
 
-  7. You can try to implement the unit test **`test_validate_customer_failure`** following the same steps.
+  7. You can try to implement the unit test **`validate_customer_failure`** following the same steps.
 
      ![](/exercises/ex03/images/rap120_ex33.gif)
 
