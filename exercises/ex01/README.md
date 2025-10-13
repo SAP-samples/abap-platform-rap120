@@ -90,9 +90,11 @@ First, you'll create an ABAP package, a database table, and an ABAP class to pop
 
    5. Joule will suggest adding the fields **`Destination`**, **`DiscountedFlightPrice`** and **`SightseeingsTips`**. Press **Accept**. 
    
-      > Please, make sure that the **`CurrencyCode`** is only set for the **`DiscountedFlightPrice`**
-      >
-      > ![](/exercises/ex01/images/rap120_2505_ex125.png)
+      > Please, make sure that the **`CurrencyCode`** field is only set for the **`DiscountedFlightPrice`** and **`FlightPrice`** in the _Booking_ entity
+      > ![](/exercises/ex01/images/rap120_2505_ex1252.png)
+      
+      > Please, make sure that the **`CurrencyCode`** field is only set for the **`BookingFee`** and **`TotalPrice`** in the _Travel_ entity
+      > ![](/exercises/ex01/images/rap120_2505_ex1251.png)
 
    6. ⚠️⚠️⚠️ Before continuing and generating the RAP business object please make sure that you have added the fields  **`Destination`**, **`DiscountedFlightPrice`** and **`SightseeingsTips`** to your data model.
       If you have not added the fields, please go back to **Step 4** before continuing with the generation of the RAP BO.
@@ -456,14 +458,14 @@ First, you'll create an ABAP package, a database table, and an ABAP class to pop
    5. Your ![behaviordefinition](images/adt_bdef.png)**`ZR_TRAVEL###`** should look like this: 
 
       ```ABAP
-         managed implementation in class ZBP_R_TRAVEL002 unique;
+         managed implementation in class ZBP_R_TRAVEL### unique;
          strict ( 2 );
          with draft;
          extensible;
-         define behavior for ZR_TRAVEL002 alias Travel
-         persistent table ztravel002
+         define behavior for ZR_TRAVEL### alias Travel
+         persistent table ztravel###
          extensible
-         draft table ztravel_d002
+         draft table ztravel_d###
          etag master LocalLastChangedAt
          lock master total etag LastChangedAt
          authorization master ( global )
@@ -498,17 +500,13 @@ First, you'll create an ABAP package, a database table, and an ABAP class to pop
          update;
          delete;
 
-         validation validateCustomer on save { create; field CustomerID; }
-
          draft action Activate optimized;
          draft action Discard;
          draft action Edit;
          draft action Resume;
-            draft determine action Prepare{
-            validation validateCustomer;
-         }
+         draft determine action Prepare;
 
-         mapping for ztravel002 corresponding extensible
+         mapping for ztravel### corresponding extensible
             {
                UUID               = uuid;
                TravelID           = travel_id;
@@ -534,10 +532,10 @@ First, you'll create an ABAP package, a database table, and an ABAP class to pop
 
          }
 
-         define behavior for ZR_BOOKING002 alias Booking
-         persistent table zbooking002
+         define behavior for ZR_BOOKING### alias Booking
+         persistent table zbooking###
          extensible
-         draft table zbooking_d002
+         draft table zbooking_d###
          etag dependent by _Travel
          lock dependent by _Travel
          authorization dependent by _Travel
@@ -555,7 +553,7 @@ First, you'll create an ABAP package, a database table, and an ABAP class to pop
          update;
          delete;
 
-         mapping for zbooking002 corresponding extensible
+         mapping for zbooking### corresponding extensible
             {
                UUID                  = uuid;
                ParentUUID            = parent_uuid;
