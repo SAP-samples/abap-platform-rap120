@@ -132,7 +132,7 @@ First, you'll create an ABAP package, a database table, and an ABAP class to pop
 <details>
   <summary> 🔵 Click to expand!</summary>
 
-  1. Open the CDS metadata extension ![ ](images/adt_ddlx.png) **`ZC_TRAVEL###`**, delete its entire source code, and insert the version provided below. 
+  1. Open the metadata extension ![ ](images/adt_ddlx.png) **`ZC_TRAVEL###`**, delete its entire source code, and insert the version provided below. 
   
      Remember to replace occurences of **`###`** with your personal suffix.
 
@@ -290,9 +290,11 @@ First, you'll create an ABAP package, a database table, and an ABAP class to pop
       } ]
       _BaseEntity;
       }
-     ```
+     ```     
 
-  2. Open the metadata extension ![ ](images/adt_ddlx.png) **`ZC_BOOKING###`**, delete its entire source code, and insert the version provided below. 
+  2. Save ![save icon](images/adt_save.png) (**Ctrl+S**) and activate ![activate icon](images/adt_activate.png) (**Ctrl+F3**) the changes.
+  
+  3. Open the metadata extension ![ ](images/adt_ddlx.png) **`ZC_BOOKING###`**, delete its entire source code, and insert the version provided below. 
   
      Remember to replace occurences of **`###`** with your personal suffix.
      
@@ -436,11 +438,10 @@ First, you'll create an ABAP package, a database table, and an ABAP class to pop
          position: 120 
       } ]
       _BaseEntity;
-      }
-   
+      }   
      ```
 
-  3. Save ![save icon](images/adt_save.png) (**Ctrl+S**) and activate ![activate icon](images/adt_activate.png) (**Ctrl+F3**) the changes.
+  4. Save ![save icon](images/adt_save.png) (**Ctrl+S**) and activate ![activate icon](images/adt_activate.png) (**Ctrl+F3**) the changes.
      
 </details>
 
