@@ -613,7 +613,9 @@ First, you'll create an ABAP package, a database table, and an ABAP class to pop
    
    2. Once it is published, select the entity ![ ](images/adt_ddls_lead_entity.png)**`Travel`** (aka _leading entity_) in the **Entity Set and Association** and click on **Preview**.
      
-   3. The preview of the _Travel_ app is now shown in the browser without any data. Press **Go**, but no data will appear because the respective database table is empty. You’ll address this in the next step.
+   3. The preview of the _Travel_ app is now shown in the browser without any data. Even if you press **Go**, no data will load because the underlying database tables for _travel_ and _booking_ are currently empty.
+
+      You can create new _travel_ and _booking_ entries in the app using the **Create** button.
        
 </details>
 
