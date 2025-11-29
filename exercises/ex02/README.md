@@ -55,13 +55,13 @@ In this exercise, you'll now enhance the base BO data model by adding a calculat
      
      association to parent ZR_TRAVEL### as _Travel on $projection.ParentUuid = _Travel.UUID
    {
-     key uuid          as Uuid,
-         parent_uuid   as ParentUuid,
-         booking_id    as BookingId,
+     key uuid          as UUID,
+         parent_uuid   as ParentUUID,
+         booking_id    as BookingID,
          booking_date  as BookingDate,
-         customer_id   as CustomerId,
-         carrier_id    as CarrierId,
-         connection_id as ConnectionId,
+         customer_id   as CustomerID,
+         carrier_id    as CarrierID,
+         connection_id as ConnectionID,
          flight_date   as FlightDate,
          @Semantics.amount.currencyCode: 'CurrencyCode'
          flight_price  as FlightPrice,
