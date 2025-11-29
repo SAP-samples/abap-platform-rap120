@@ -57,7 +57,7 @@ In this exercise, you'll now enhance the base BO data model by adding a calculat
    {
      key uuid          as Uuid,
          parent_uuid   as ParentUuid,
-         booking_id    as BookingID,
+         booking_id    as BookingId,
          booking_date  as BookingDate,
          customer_id   as CustomerId,
          carrier_id    as CarrierId,
