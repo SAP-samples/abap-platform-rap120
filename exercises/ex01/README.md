@@ -486,113 +486,113 @@ First, you'll create an ABAP package, a database table, and an ABAP class to pop
    5. Your behavior definition ![behaviordefinition](images/adt_bdef.png)**`ZR_TRAVEL###`** should look like this: 
 
       ```ABAP
-         managed implementation in class ZBP_R_TRAVEL### unique;
-         strict ( 2 );
-         with draft;
-         extensible;
-         define behavior for ZR_TRAVEL### alias Travel
-         persistent table ztravel###
-         extensible
-         draft table ztravel_d###
-         etag master LocalLastChangedAt
-         lock master total etag LastChangedAt
-         authorization master ( global )
+      managed implementation in class ZBP_R_TRAVEL### unique;
+      strict ( 2 );
+      with draft;
+      extensible;
+      define behavior for ZR_TRAVEL### alias Travel
+      persistent table ztravel###
+      extensible
+      draft table ztravel_d###
+      etag master LocalLastChangedAt
+      lock master total etag LastChangedAt
+      authorization master ( global )
+      {
+      field ( readonly )
+      UUID,
+      // Added in step 2
+      SightseeingsTips,
+      TotalPrice,
+      LocalCreatedBy,
+      LocalCreatedAt,
+      LocalLastChangedBy,
+      LocalLastChangedAt,
+      LastChangedAt;
+
+      // Added in step 3
+      field ( mandatory : create )
+      BeginDate,
+      EndDate,
+      Destination;
+
+      field ( numbering : managed )
+      UUID;
+
+      create;
+      update;
+      delete;
+
+      draft action Activate optimized;
+      draft action Discard;
+      draft action Edit;
+      draft action Resume;
+      draft determine action Prepare;
+
+      mapping for ztravel### corresponding extensible
          {
-         field ( readonly )
-         UUID,
-         // Added in step 2
-         SightseeingsTips,
-         TotalPrice,
-         LocalCreatedBy,
-         LocalCreatedAt,
-         LocalLastChangedBy,
-         LocalLastChangedAt,
-         LastChangedAt;
-
-         // Added in step 3
-         field ( mandatory : create )
-         BeginDate,
-         EndDate,
-         Destination;
-
-         field ( numbering : managed )
-         UUID;
-
-         create;
-         update;
-         delete;
-
-         draft action Activate optimized;
-         draft action Discard;
-         draft action Edit;
-         draft action Resume;
-         draft determine action Prepare;
-
-         mapping for ztravel### corresponding extensible
-            {
-               UUID               = uuid;
-               TravelID           = travel_id;
-               AgencyID           = agency_id;
-               CustomerID         = customer_id;
-               BeginDate          = begin_date;
-               EndDate            = end_date;
-               BookingFee         = booking_fee;
-               TotalPrice         = total_price;
-               CurrencyCode       = currency_code;
-               Description        = description;
-               Status             = status;
-               Destination        = destination;
-               SightseeingsTips   = sightseeings_tips;
-               LocalCreatedBy     = local_created_by;
-               LocalCreatedAt     = local_created_at;
-               LocalLastChangedBy = local_last_changed_by;
-               LocalLastChangedAt = local_last_changed_at;
-               LastChangedAt      = last_changed_at;
-            }
-
-         association _Booking { create; with draft; }
-
+            UUID               = uuid;
+            TravelID           = travel_id;
+            AgencyID           = agency_id;
+            CustomerID         = customer_id;
+            BeginDate          = begin_date;
+            EndDate            = end_date;
+            BookingFee         = booking_fee;
+            TotalPrice         = total_price;
+            CurrencyCode       = currency_code;
+            Description        = description;
+            Status             = status;
+            Destination        = destination;
+            SightseeingsTips   = sightseeings_tips;
+            LocalCreatedBy     = local_created_by;
+            LocalCreatedAt     = local_created_at;
+            LocalLastChangedBy = local_last_changed_by;
+            LocalLastChangedAt = local_last_changed_at;
+            LastChangedAt      = last_changed_at;
          }
 
-         define behavior for ZR_BOOKING### alias Booking
-         persistent table zbooking###
-         extensible
-         draft table zbooking_d###
-         etag dependent by _Travel
-         lock dependent by _Travel
-         authorization dependent by _Travel
+      association _Booking { create; with draft; }
+
+      }
+
+      define behavior for ZR_BOOKING### alias Booking
+      persistent table zbooking###
+      extensible
+      draft table zbooking_d###
+      etag dependent by _Travel
+      lock dependent by _Travel
+      authorization dependent by _Travel
+      {
+      field ( readonly )
+      UUID,
+      ParentUUID,
+      // Added in step 4
+      DiscountedFlightPrice;
+
+      field ( numbering : managed )
+      UUID;
+
+
+      update;
+      delete;
+
+      mapping for zbooking### corresponding extensible
          {
-         field ( readonly )
-         UUID,
-         ParentUUID,
-         // Added in step 4
-         DiscountedFlightPrice;
-
-         field ( numbering : managed )
-         UUID;
-
-
-         update;
-         delete;
-
-         mapping for zbooking### corresponding extensible
-            {
-               UUID                  = uuid;
-               ParentUUID            = parent_uuid;
-               BookingID             = booking_id;
-               BookingDate           = booking_date;
-               CustomerID            = customer_id;
-               CarrierID             = carrier_id;
-               ConnectionID          = connection_id;
-               FlightDate            = flight_date;
-               FlightPrice           = flight_price;
-               CurrencyCode          = currency_code;
-               DiscountedFlightPrice = discounted_flight_price;
-            }
-
-         association _Travel { with draft; }
-
+            UUID                  = uuid;
+            ParentUUID            = parent_uuid;
+            BookingID             = booking_id;
+            BookingDate           = booking_date;
+            CustomerID            = customer_id;
+            CarrierID             = carrier_id;
+            ConnectionID          = connection_id;
+            FlightDate            = flight_date;
+            FlightPrice           = flight_price;
+            CurrencyCode          = currency_code;
+            DiscountedFlightPrice = discounted_flight_price;
          }
+
+      association _Travel { with draft; }
+
+      }
       ```
 
 </details>
