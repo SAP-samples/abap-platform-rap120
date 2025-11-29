@@ -97,9 +97,9 @@ First, you'll create an ABAP package, a database table, and an ABAP class to pop
 
    5. Joule will suggest adding the fields **`Destination`**, **`DiscountedFlightPrice`** and **`SightseeingsTips`**. 
    
-      Press **Accept**.
+      Press **Accept** to allow Joule to update the service configuration in the dialog on the right.
 
-      Please perform folowing manual adjustment, if needed:
+      Please review the updated service configuration and make the following manual adjustment if needed.
       
       > ⚠️ For the _**Travel**_ entity:  
       > - Make sure that the **`CurrencyCode`** field is only set for the **`BookingFee`** and **`TotalPrice`**. Use the **Edit** button if needed.
