@@ -71,7 +71,7 @@ First, you'll create an ABAP package, a database table, and an ABAP class to pop
    2. Please copy and paste the prompt provided below in the chat, and press **Enter**. Ensure to replace `###` with your chosen suffix.
       
       ```PROMPT
-      Create a transaction application for travel management. Create the entity Travel based on the structure /DMO/TRAVEL_DATA. 
+      Create a transactional application for travel management. Create the entity Travel based on the structure /DMO/TRAVEL_DATA. 
       The second entity is Booking based on /DMO/BOOKING_DATA. The generated objects should end with  suffix “###”
       ```
  
