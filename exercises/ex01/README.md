@@ -72,7 +72,7 @@ First, you'll create an ABAP package, a database table, and an ABAP class to pop
       
       ```PROMPT
       Create a transactional application for travel management. Create the entity Travel based on the structure /DMO/TRAVEL_DATA. 
-      The second entity is Booking based on /DMO/BOOKING_DATA. The generated objects should end with  suffix “###”
+      The second entity is Booking based on /DMO/BOOKING_DATA. The generated objects should end with  suffix “###”.
       ```
  
    3. Joule will recommend the Business Object entities _Travel_ and _Booking_ along with their respective fields. Press **Accept**.
