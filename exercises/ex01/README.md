@@ -487,7 +487,7 @@ First, you'll create an ABAP package, a database table, and an ABAP class to pop
          DiscountedFlightPrice;
       ```
       
-   5. Your _Travel_ behavior ![behaviordefinition](images/adt_bdefe.png)**`ZR_TRAVEL###`** should look like this: 
+   5. Your behavior definition ![behaviordefinition](images/adt_bdef.png)**`ZR_TRAVEL###`** should look like this: 
 
       ```ABAP
          managed implementation in class ZBP_R_TRAVEL### unique;
