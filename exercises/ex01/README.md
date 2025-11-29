@@ -187,7 +187,7 @@ First, you'll create an ABAP package, a database table, and an ABAP class to pop
      @UI.selectionField: [ {
        position: 10
      } ]
-     TravelId;
+     TravelID;
      
      @UI.identification: [ {
         position: 20 
