@@ -147,44 +147,47 @@ First, you'll create an ABAP package, a database table, and an ABAP class to pop
   
      annotate view ZC_TRAVEL### with
      {
-  
-     @UI.hidden: true
-     @EndUserText.label: 'UUID'
-     @UI.facet: [ {
-        label: 'General Information', 
-        id: 'GeneralInfo', 
-        purpose: #STANDARD, 
-        position: 10 , 
+       @UI.facet: [ {
+        label: 'General Information',
+        id: 'GeneralInfo',
+        purpose: #STANDARD,
+        position: 10 ,
         type: #IDENTIFICATION_REFERENCE
-     }, 
+     },
      {
-        label: 'Sightseeing Tips', 
-        id: 'SightseeingTips', 
+        label: 'Sightseeing Tips',
+        id: 'SightseeingTips',
         targetQualifier: 'SightseeingTips',
-        purpose: #STANDARD, 
-        position: 11 , 
+        purpose: #STANDARD,
+        position: 11 ,
         type: #IDENTIFICATION_REFERENCE
-     }, 
+     },
      {
-        label: 'Booking Items', 
-        id: 'BookingItems', 
-        purpose: #STANDARD, 
-        position: 12 , 
-        type: #LINEITEM_REFERENCE, 
+        label: 'Booking Items',
+        id: 'BookingItems',
+        purpose: #STANDARD,
+        position: 12 ,
+        type: #LINEITEM_REFERENCE,
         targetElement: '_Booking'
      } ]
+     
+     @UI.hidden: true
+     @EndUserText.label: 'UUID'
+     UUID;
+   
+     @EndUserText.label: 'Travel ID'
      @UI.identification: [ {
-        position: 10 , 
-        label: 'UUID'
+       position: 10 ,
+       label: 'Travel ID'
      } ]
      @UI.lineItem: [ {
-        position: 10 , 
-        label: 'UUID'
+       position: 10 ,
+       label: 'Travel ID'
      } ]
      @UI.selectionField: [ {
-        position: 10 
+       position: 10
      } ]
-     UUID;
+     TravelId;
      
      @UI.identification: [ {
         position: 20 
@@ -309,135 +312,128 @@ First, you'll create an ABAP package, a database table, and an ABAP class to pop
   
      annotate view ZC_BOOKING### with
      {
-     @UI.hidden: true
-     @EndUserText.label: 'UUID'
-     @UI.facet: [ {
-        label: 'General Information', 
-        id: 'GeneralInfo', 
-        purpose: #STANDARD, 
-        position: 10 , 
-        type: #IDENTIFICATION_REFERENCE
-     } ]
-     @UI.identification: [ {
-        position: 10 , 
-        label: 'UUID'
-     } ]
-     @UI.lineItem: [ {
-        position: 10 , 
-        label: 'UUID'
-     } ]
-     @UI.selectionField: [ {
-        position: 10 
-     } ]
-     UUID;
+       @UI.hidden: true
+       @EndUserText.label: 'UUID'
+       UUID;
+       
+       @UI.facet: [ {
+         label: 'General Information', 
+         id: 'GeneralInfo', 
+         purpose: #STANDARD, 
+         position: 20 , 
+         type: #IDENTIFICATION_REFERENCE
+       } ]
+       
+       @UI.hidden: true
+       @EndUserText.label: 'Parent UUID'
+       ParentUUID;
+       
+       @EndUserText.label: 'Booking ID'
+       @UI.identification: [ {
+         position: 10 , 
+         label: 'Booking ID'
+       } ]
+       @UI.lineItem: [ {
+         position: 10 , 
+         label: 'Booking ID'
+       } ]
+       @UI.selectionField: [ {
+         position: 10 
+       } ]
+       BookingID;
      
-     @UI.hidden: true
-     @EndUserText.label: 'ParentUUID'
-     @UI.identification: [ {
-        position: 20 , 
-        label: 'ParentUUID'
-     } ]
-     @UI.lineItem: [ {
-        position: 20 , 
-        label: 'ParentUUID'
-     } ]
-     @UI.selectionField: [ {
-        position: 20 
-     } ]
-     ParentUUID;
-     
-     @UI.identification: [ {
-        position: 30 
-     } ]
-     @UI.lineItem: [ {
-        position: 30 
-     } ]
-     @UI.selectionField: [ {
-        position: 30 
-     } ]
-     BookingDate;
-     
-     @UI.identification: [ {
-        position: 40 
-     } ]
-     @UI.lineItem: [ {
-        position: 40 
-     } ]
-     @UI.selectionField: [ {
-        position: 40 
-     } ]
-     CustomerID;
-     
-     @UI.identification: [ {
-        position: 50 
-     } ]
-     @UI.lineItem: [ {
-        position: 50 
-     } ]
-     @UI.selectionField: [ {
-        position: 50 
-     } ]
-     CarrierID;
-     
-     @UI.identification: [ {
-        position: 60 
-     } ]
-     @UI.lineItem: [ {
-        position: 60 
-     } ]
-     @UI.selectionField: [ {
-        position: 60 
-     } ]
-     ConnectionID;
-     
-     @UI.identification: [ {
-        position: 70 
-     } ]
-     @UI.lineItem: [ {
-        position: 70 
-     } ]
-     @UI.selectionField: [ {
-        position: 70 
-     } ]
-     FlightDate;
-     
-     @UI.identification: [ {
-        position: 80 
-     } ]
-     @UI.lineItem: [ {
-        position: 80 
-     } ]
-     @UI.selectionField: [ {
-        position: 80 
-     } ]
-     FlightPrice;
-     
-     @UI.identification: [ {
-        position: 100,
-        label: 'Discounted Flight Price' 
-     } ]
-     @UI.lineItem: [ {
-        position: 100 ,
-        label: 'Discounted Flight Price' 
-     } ]
-     @UI.selectionField: [ {
-        position: 100 
-     } ]
-     DiscountedFlightPrice;
-     
-     @EndUserText.label: '_BaseEntity'
-     @UI.identification: [ {
-        position: 120 , 
-        label: '_BaseEntity'
-     } ]
-     @UI.lineItem: [ {
-        position: 120 , 
-        label: '_BaseEntity'
-     } ]
-     @UI.selectionField: [ {
-        position: 120 
-     } ]
-     _BaseEntity;
+       @UI.identification: [ {
+          position: 30 
+       } ]
+       @UI.lineItem: [ {
+          position: 30 
+       } ]
+       @UI.selectionField: [ {
+          position: 30 
+       } ]
+       BookingDate;
+       
+       @UI.identification: [ {
+          position: 40 
+       } ]
+       @UI.lineItem: [ {
+          position: 40 
+       } ]
+       @UI.selectionField: [ {
+          position: 40 
+       } ]
+       CustomerID;
+       
+       @UI.identification: [ {
+          position: 50 
+       } ]
+       @UI.lineItem: [ {
+          position: 50 
+       } ]
+       @UI.selectionField: [ {
+          position: 50 
+       } ]
+       CarrierID;
+       
+       @UI.identification: [ {
+          position: 60 
+       } ]
+       @UI.lineItem: [ {
+          position: 60 
+       } ]
+       @UI.selectionField: [ {
+          position: 60 
+       } ]
+       ConnectionID;
+       
+       @UI.identification: [ {
+          position: 70 
+       } ]
+       @UI.lineItem: [ {
+          position: 70 
+       } ]
+       @UI.selectionField: [ {
+          position: 70 
+       } ]
+       FlightDate;
+       
+       @UI.identification: [ {
+          position: 80 
+       } ]
+       @UI.lineItem: [ {
+          position: 80 
+       } ]
+       @UI.selectionField: [ {
+          position: 80 
+       } ]
+       FlightPrice;
+       
+       @UI.identification: [ {
+          position: 100,
+          label: 'Discounted Flight Price' 
+       } ]
+       @UI.lineItem: [ {
+          position: 100 ,
+          label: 'Discounted Flight Price' 
+       } ]
+       @UI.selectionField: [ {
+          position: 100 
+       } ]
+       DiscountedFlightPrice;
+       
+       @EndUserText.label: '_BaseEntity'
+       @UI.identification: [ {
+          position: 120 , 
+          label: '_BaseEntity'
+       } ]
+       @UI.lineItem: [ {
+          position: 120 , 
+          label: '_BaseEntity'
+       } ]
+       @UI.selectionField: [ {
+          position: 120 
+       } ]
+       _BaseEntity;
      }   
      ```
 
