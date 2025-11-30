@@ -47,8 +47,8 @@ A validation is implicitly invoked by the business object’s framework if the t
 2. Insert the following code into your behavior definition:
  
     ```ABAP 
-      field ( mandatory )
-        CustomerID;
+    field ( mandatory )
+      CustomerID;
     ```
 
 3. Now, define the validation **`validateCustomer`**.
@@ -56,7 +56,7 @@ A validation is implicitly invoked by the business object’s framework if the t
    For that, add the following code snippet after the `delete;` statement
    
    ```ABAP
-     validation validateCustomer on save { create; field CustomerID; }
+   validation validateCustomer on save { create; field CustomerID; }
    ```         
 
 4. In order to have draft instances being checked by validations before they become active, they have to be specified for the **`draft determine action prepare`** in the behavior definition.
@@ -64,127 +64,127 @@ A validation is implicitly invoked by the business object’s framework if the t
    Replace the code line **`draft determine action Prepare;`** with the following code snippet as shown on the screenshot below.
 
    ```ABAP
-     draft determine action Prepare{
-       validation validateCustomer;
-     }
+   draft determine action Prepare{
+     validation validateCustomer;
+   }
    ```    
      
    Your behavior definition ![behaviordefinition](images/adt_bdef.png)**`ZR_TRAVEL###`** should look like this:
 
    ```BDL
-      managed implementation in class ZBP_R_TRAVEL### unique;
-      strict ( 2 );
-      with draft;
-      extensible;
-      define behavior for ZR_TRAVEL### alias Travel
-      persistent table ztravel###
-      extensible
-      draft table ztravel_d###
-      etag master LocalLastChangedAt
-      lock master total etag LastChangedAt
-      authorization master ( global )
-      {
-        field ( readonly )
-        UUID,
-        SightseeingsTips,
-        TotalPrice,
-        LocalCreatedBy,
-        LocalCreatedAt,
-        LocalLastChangedBy,
-        LocalLastChangedAt,
-        LastChangedAt;
-
-        field ( mandatory : create )
-        BeginDate,
-        EndDate,
-        Destination;
-
-        // Add CustomerId as mandatory field
-        field ( mandatory )
-        CustomerId;
-
-        field ( numbering : managed )
-        UUID;
-
-
-        create;
-        update;
-        delete;
-
-        // Add validation validateCustomer
-        validation validateCustomer on save { create; field CustomerID; }
-
-        draft action Activate optimized;
-        draft action Discard;
-        draft action Edit;
-        draft action Resume;
-          draft determine action Prepare{
-          validation validateCustomer;
+    managed implementation in class ZBP_R_TRAVEL### unique;
+    strict ( 2 );
+    with draft;
+    extensible;
+    define behavior for ZR_TRAVEL### alias Travel
+    persistent table ztravel###
+    extensible
+    draft table ztravel_d###
+    etag master LocalLastChangedAt
+    lock master total etag LastChangedAt
+    authorization master ( global )
+    {
+      field ( readonly )
+      UUID,
+      SightseeingsTips,
+      TotalPrice,
+      LocalCreatedBy,
+      LocalCreatedAt,
+      LocalLastChangedBy,
+      LocalLastChangedAt,
+      LastChangedAt;
+  
+      field ( mandatory : create )
+      BeginDate,
+      EndDate,
+      Destination;
+  
+      // Add CustomerId as mandatory field
+      field ( mandatory )
+      CustomerId;
+  
+      field ( numbering : managed )
+      UUID;
+  
+  
+      create;
+      update;
+      delete;
+  
+      // Add validation validateCustomer
+      validation validateCustomer on save { create; field CustomerID; }
+  
+      draft action Activate optimized;
+      draft action Discard;
+      draft action Edit;
+      draft action Resume;
+        draft determine action Prepare{
+        validation validateCustomer;
+      }
+  
+      mapping for ztravel### corresponding extensible
+        {
+          UUID               = uuid;
+          TravelID           = travel_id;
+          AgencyID           = agency_id;
+          CustomerID         = customer_id;
+          BeginDate          = begin_date;
+          EndDate            = end_date;
+          BookingFee         = booking_fee;
+          TotalPrice         = total_price;
+          CurrencyCode       = currency_code;
+          Description        = description;
+          Status             = status;
+          Destination        = destination;
+          SightseeingsTips   = sightseeings_tips;
+          LocalCreatedBy     = local_created_by;
+          LocalCreatedAt     = local_created_at;
+          LocalLastChangedBy = local_last_changed_by;
+          LocalLastChangedAt = local_last_changed_at;
+          LastChangedAt      = last_changed_at;
         }
-
-        mapping for ztravel### corresponding extensible
-          {
-            UUID               = uuid;
-            TravelID           = travel_id;
-            AgencyID           = agency_id;
-            CustomerID         = customer_id;
-            BeginDate          = begin_date;
-            EndDate            = end_date;
-            BookingFee         = booking_fee;
-            TotalPrice         = total_price;
-            CurrencyCode       = currency_code;
-            Description        = description;
-            Status             = status;
-            Destination        = destination;
-            SightseeingsTips   = sightseeings_tips;
-            LocalCreatedBy     = local_created_by;
-            LocalCreatedAt     = local_created_at;
-            LocalLastChangedBy = local_last_changed_by;
-            LocalLastChangedAt = local_last_changed_at;
-            LastChangedAt      = last_changed_at;
-          }
-
-        association _Booking { create; with draft; }
-
-      }
-
-      define behavior for ZR_BOOKING### alias Booking
-      persistent table zbooking###
-      extensible
-      draft table zbooking_d###
-      etag dependent by _Travel
-      lock dependent by _Travel
-      authorization dependent by _Travel
-      {
-        field ( readonly )
-        UUID,
-        ParentUUID;
-
-        field ( numbering : managed )
-        UUID;
-
-
-        update;
-        delete;
-
-        mapping for zbooking### corresponding extensible
-          {
-            UUID                  = uuid;
-            ParentUUID            = parent_uuid;
-            BookingID             = booking_id;
-            BookingDate           = booking_date;
-            CustomerID            = customer_id;
-            CarrierID             = carrier_id;
-            ConnectionID          = connection_id;
-            FlightDate            = flight_date;
-            FlightPrice           = flight_price;
-            CurrencyCode          = currency_code;
-            DiscountedFlightPrice = discounted_flight_price;
-          }
-
-        association _Travel { with draft; }
-
-      }
+  
+      association _Booking { create; with draft; }
+  
+    }
+  
+    define behavior for ZR_BOOKING### alias Booking
+    persistent table zbooking###
+    extensible
+    draft table zbooking_d###
+    etag dependent by _Travel
+    lock dependent by _Travel
+    authorization dependent by _Travel
+    {
+      field ( readonly )
+      UUID,
+      ParentUUID;
+  
+      field ( numbering : managed )
+      UUID;
+  
+  
+      update;
+      delete;
+  
+      mapping for zbooking### corresponding extensible
+        {
+          UUID                  = uuid;
+          ParentUUID            = parent_uuid;
+          BookingID             = booking_id;
+          BookingDate           = booking_date;
+          CustomerID            = customer_id;
+          CarrierID             = carrier_id;
+          ConnectionID          = connection_id;
+          FlightDate            = flight_date;
+          FlightPrice           = flight_price;
+          CurrencyCode          = currency_code;
+          DiscountedFlightPrice = discounted_flight_price;
+        }
+  
+      association _Travel { with draft; }
+  
+    }
    ``` 
 
    > **Short explanation**:    
