@@ -103,6 +103,8 @@ In this exercise, you will now analyze the ABAP helper class ![class](images/adt
 
      The test class ![abapclass](images/adt_class.png)**`LTCL_TRAVEL_HELPER_###`** should look like this:
 
+     > ⚠️ Please adjust the client in the source code to the one you’re working in — for example, use client **`080`** at UKISUG Connect 2025.
+
      ```ABAP
      CLASS ltcl_travel_helper_### DEFINITION FINAL FOR TESTING
        DURATION SHORT RISK LEVEL HARMLESS.
