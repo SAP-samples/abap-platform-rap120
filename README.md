@@ -106,8 +106,7 @@ Follow these steps to build a SAP Fiori App with Joule in ABAP Cloud
 | [Exercise 5: Add a determination](exercises/ex05/README.md) | -- |
 
 
-
-#### Optional Exercise: ABAP Cloud Generator - Transactional App from Scratch
+#### Optional Exercises
 
 | Exercises | -- |
 | ------------- |  -- |
