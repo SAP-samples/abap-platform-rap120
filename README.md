@@ -11,7 +11,7 @@ This default template for SAP Samples repositories includes files for README, LI
 # Containing Files
 
 1. The LICENSE file:
-In most cases, the license for SAP sample projects is `Apache 2.0`.
+In most cases the license for SAP sample projects is `Apache 2.0`.
 
 2. The .reuse/dep5 file: 
 The [Reuse Tool](https://reuse.software/) must be used for your samples project. You can find the .reuse/dep5 in the project initial. Please replace the parts inside the single angle quotation marks < > by the specific information for your repository
