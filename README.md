@@ -11,7 +11,7 @@ This default template for SAP Samples repositories includes files for README, LI
 # Containing Files
 
 1. The LICENSE file:
-In most cases the license for SAP sample projects is `Apache 2.0`.
+In most cases, the license for SAP sample projects is `Apache 2.0`.
 
 2. The .reuse/dep5 file: 
 The [Reuse Tool](https://reuse.software/) must be used for your samples project. You can find the .reuse/dep5 in the project initial. Please replace the parts inside the single angle quotation marks < > by the specific information for your repository
@@ -117,9 +117,9 @@ Follow these steps to build a SAP Fiori App with Joule in ABAP Cloud
 ## Recordings
 [^Top of page](#)
 
-▶️ Watch the replay of the virtual **TechEd 2024 Session: Explore SAP Joule for developers, with ABAP AI capabilities**.
+▶️ Watch the replay of the virtual **TechEd 2025 Session: Explore SAP Joule for developers, with ABAP AI capabilities**.
 
-[<img src="teched-img.png" alt="TechEd" width="60%">](https://www.youtube.com/watch?v=r1aXK21e6pk)
+[<img src="teched-img.png" alt="TechEd" width="60%">](https://www.youtube.com/watch?v=b9lmZHp2WaA)
 
 
 <!-- ## 📤Solution Package
@@ -163,7 +163,6 @@ You can find more information about the generative AI in ABAP, ABAP Cloud, RAP h
 
 - [Generative AI in ABAP Cloud](https://help.sap.com/docs/abap-ai/generative-ai-in-abap-cloud/generative-ai-in-abap-cloud?locale=en-US) 
 - [ABAP Cloud Roadmap Information - GenAI](https://help.sap.com/docs/abap-cross-product/roadmap-info/genai?locale=en-US)
-- [ABAP AI Strategy Frequently Asked Questions ](https://www.sap.com/documents/2024/11/6c0a3705-e77e-0010-bca6-c68f7e60039b.html)
 - [ABAP Cloud development model](https://help.sap.com/docs/abap-cloud)
 - [Getting Started with ABAP RESTful Application Programming Model (RAP)](https://pages.community.sap.com/topics/abap/rap)
 
@@ -174,4 +173,4 @@ If you wish to contribute code, offer fixes or improvements, please send a pull 
 -->
 
 ## License
-Copyright (c) 2025 SAP SE or an SAP affiliate company. All rights reserved. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](LICENSE) file.
+Copyright (c) 2026 SAP SE or an SAP affiliate company. All rights reserved. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](LICENSE) file.

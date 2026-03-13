@@ -25,7 +25,7 @@ In this exercise, you will now analyze the ABAP helper class ![class](images/adt
 
    1. Go to the **Test Clasess** tab at the bottom of class editor and insert a template for ABAP Unit test classes.
  
-      To do that, just type **`testClass`** in your editor, then press **Ctrl + Space** to open the code completion list. 
+      To do that, just type **`testClass`** in your editor, then press **Ctrl(Cmd) + Space** to open the code completion list. 
  
       Select **`testClass - Test class (ABAP Unit)`** from the suggested template entries.
 
@@ -102,8 +102,6 @@ In this exercise, you will now analyze the ABAP helper class ![class](images/adt
   6. Run the unit tests.
 
      The test class ![abapclass](images/adt_class.png)**`LTCL_TRAVEL_HELPER_###`** should look like this:
-
-     > ⚠️ Please adjust the client in the source code to the one you’re working in — for example, use client **`080`** at UKISUG Connect 2025.
 
      ```ABAP
      CLASS ltcl_travel_helper_### DEFINITION FINAL FOR TESTING

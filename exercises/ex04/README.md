@@ -312,6 +312,8 @@ A validation is implicitly invoked by the business object’s framework if the t
   
   2. Play around with the app.
 
+  ![](/exercises/ex04/images/rap120_ex43.gif)
+
  </details>
 
 ## Summary & Next Exercise

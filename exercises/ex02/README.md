@@ -83,7 +83,7 @@ In this exercise, you'll now enhance the base BO data model by adding a calculat
    
       To do that, go to the **Project Explorer** and open the behavior definition ![bdef icon](images/adt_bdef.png)**`ZR_TRAVEL###`**.
  
-      To recreate the draft table, set the cursor on the draft table name ![databasetable](images/adt_tabl.png)**`ZBOOKING_D###`**, start the ADT Quick Fix by clicking **Ctrl+1**, and select the entry **`Recreate draft table zbooking_d### so that it fits for entity zr_booking## and reflects recent changes.`** in the Quick Assist view. Alternatively use the displayed icon as shown on the picture.
+      To recreate the draft table, set the cursor on the draft table name ![databasetable](images/adt_tabl.png)**`ZBOOKING_D###`**, start the ADT Quick Fix by clicking **Ctrl+1**, and select the entry **`Recreate draft table zbooking_d###`** so that it fits for entity zr_booking## and reflects recent changes. in the Quick Assist view. Alternatively use the displayed icon as shown on the picture.
 
       <!-- ![ADT Quick Fix](/exercises/ex02/images/2_BDEF_QuickFix.gif) -->
 

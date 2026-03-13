@@ -277,7 +277,7 @@ In this exercise, you will now define and implement a determination called **`ca
 1. Refresh your application in the browser using **F5** if the browser is still open   
    or go to your service binding ![service binding](images/adt_srvb.png)**`ZUI_TRAVEL_###_04`** and start the Fiori elements App preview for the **`Travel`** entity set.
 
-2. Create a new _Travel_ instance with one ore more _Booking_ instances. The **`Total Price`** field should calculated by the logic you just implemented. 
+2. Create a new _Travel_ instance with one or more _Booking_ instances. The **`Total Price`** field should calculated by the logic you just implemented. 
 
  
 </details>

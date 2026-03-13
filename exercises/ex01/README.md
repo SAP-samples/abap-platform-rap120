@@ -44,11 +44,10 @@ First, you'll create an ABAP package, a database table, and an ABAP class to pop
  
        - Name: **`ZRAP120_AI_###`**
        - Description: _**`RAP AI Package ###`**_
-       - Select the box `☑️` **Add to favorites package**
+       - Select the box `☑️` **Add to favorite packages**
        - Superpackage: **`ZLOCAL`**
        
-   3. Check that the Package Type is _Development_ and Software Component _ZLOCAL_. Click on **Next >**
-   4. In the Transport Request step, maintain the _Request Description_ (e.g. _**RAP120 Package ###**_), and click on **Finish**.
+   3. Check that the Package Type is _Development_ and Software Component _ZLOCAL_. Click on **Next >** and click on **Finish**.
       
       <!-- <img src="images/p1c.png" alt="table" width="50%"> -->
 
@@ -64,7 +63,7 @@ First, you'll create an ABAP package, a database table, and an ABAP class to pop
 
    1. Right-click on your ABAP package ![package](images/adt_package.png)**`ZRAP120_AI_###`** and select **Generate ABAP Repository Objects** from the context menu.
       
-      Select the entry **OData UI Service from Scratch** in the wizard and click **Next >**.
+      Under ABAP RESTFul Application Programming Model select the entry **OData UI Service from Scratch** in the wizard and click **Next >**.
       
       Maintain your package name **`ZRAP120_AI_###`** and click **Next >**.                  
 
@@ -102,7 +101,7 @@ First, you'll create an ABAP package, a database table, and an ABAP class to pop
       Please review the updated service configuration and make the following manual adjustment if needed.
       
       > ⚠️ For the _**Travel**_ entity:  
-      > - Make sure that the **`CurrencyCode`** field is only set for the **`BookingFee`** and **`TotalPrice`**. Use the **Edit** button if needed.
+      > -  Use the **Edit** button to add **`CurrencyCode`** for the **`BookingFee`** and **`TotalPrice`** manualy in **`CurrencyCode`** field.
       > - Delete the field **`BookingFeeCurr`**, as only `CurrencyCode` is required. Use the **Remove** button for this.
       >
       > ![](/exercises/ex01/images/rap120_2505_ex1251.png)
@@ -132,7 +131,7 @@ First, you'll create an ABAP package, a database table, and an ABAP class to pop
 <details>
   <summary> 🔵 Click to expand!</summary>
 
-  1. Open the metadata extension ![ ](images/adt_ddlx.png) **`ZC_TRAVEL###`**, delete its entire source code, and insert the version provided below. 
+  1. Under Core Data Services open the metadata extension ![ ](images/adt_ddlx.png) **`ZC_TRAVEL###`**, delete its entire source code, and insert the version provided below. 
   
      Remember to replace occurences of **`###`** with your personal suffix.
 
