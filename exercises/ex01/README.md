@@ -72,7 +72,7 @@ First, you'll create an ABAP package, a database table, and an ABAP class to pop
       Ensure to replace **`###`** with your personal suffix.
       
       ```PROMPT
-      Create a transactional application for travel management.
+      Create a transactional application for travel management with DRAFT.
       Create the entity Travel based on the structure /DMO/TRAVEL_DATA. 
       The second entity is Booking based on /DMO/BOOKING_DATA.
       The generated objects should end with  suffix “###”.
