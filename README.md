@@ -1,6 +1,3 @@
-https://c5c5aae1-6500-41a8-b971-bdfd44840a26.abap-web.us10.hana.ondemand.com/
-
-
 
 [Home - Workshops about the ABAP RESTful Application Programming Model (RAP) ](https://github.com/SAP-samples/abap-platform-rap-workshops/blob/main/README.md)
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/abap-platform-rap120)](https://api.reuse.software/info/github.com/SAP-samples/abap-platform-rap120)
