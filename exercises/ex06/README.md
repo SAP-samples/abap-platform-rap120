@@ -208,7 +208,7 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
                 UPDATE FIELDS ( SightseeingsTips )
                 WITH VALUE #(
                   ( %tky = ls_travel-%tky
-                    SightseeingTips = lv_tips )
+                    SightseeingsTips = lv_tips )
                 ).
           ENDIF.
         ENDLOOP.
@@ -315,7 +315,7 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
                 UPDATE FIELDS ( SightseeingsTips )
                 WITH VALUE #(
                   ( %tky = ls_travel-%tky
-                    SightseeingTips = lv_tips )
+                    SightseeingsTips = lv_tips )
                 ).
           ENDIF.
         ENDLOOP.
