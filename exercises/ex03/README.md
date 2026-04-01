@@ -23,7 +23,7 @@ In this exercise, you will now analyze the ABAP helper class ![class](images/adt
 <details>
   <summary>🔵Click to expand!</summary>
 
-   1. Go to the **Test Clasess** tab at the bottom of class editor and insert a template for ABAP Unit test classes.
+   1. From your **`ZCL_TRAVEL_HELPER_###`** class, go to the **Test Clasess** tab at the bottom of class editor and insert a template for ABAP Unit test classes.
  
       To do that, just type **`testClass`** in your editor, then press **Ctrl(Cmd) + Space** to open the code completion list. 
  
