@@ -464,7 +464,7 @@ First, you'll create an ABAP package, a database table, and an ABAP class to pop
          LastChangedAt;
       ```   
       
-   3. In ![behaviordefinition](images/adt_bdefe.png)**`ZR_TRAVEL###`**, add *`field ( mandatory : create )`* and below the fields **`Destination`**, **`StartDate`** and **`EndDate`** for **`ZR_TRAVEL###`**.
+   3. In ![behaviordefinition](images/adt_bdefe.png)**`ZR_TRAVEL###`**, starting after the *`field ( readonly )`* code block, add *`field ( mandatory : create )`* and below the fields **`Destination`**, **`StartDate`** and **`EndDate`** for **`ZR_TRAVEL###`**.
 
       ```ABAP
          field ( mandatory : create )
