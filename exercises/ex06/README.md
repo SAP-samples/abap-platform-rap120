@@ -196,16 +196,16 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
 
         READ ENTITIES OF ZR_TRAVEL### IN LOCAL MODE
           ENTITY Travel
-            FIELDS ( Destination SightseeingTips )
+            FIELDS ( Destination SightseeingsTips )
             WITH CORRESPONDING #( keys )
           RESULT DATA(lt_travels).
 
         LOOP AT lt_travels INTO DATA(ls_travel).
-          IF ls_travel-SightseeingTips IS INITIAL.
+          IF ls_travel-SightseeingsTips IS INITIAL.
             DATA(lv_tips) = lo_travel_helper->get_sightseeing_tips( ls_travel-Destination ).
             MODIFY ENTITIES OF ZR_TRAVEL### IN LOCAL MODE
               ENTITY Travel
-                UPDATE FIELDS ( SightseeingTips )
+                UPDATE FIELDS ( SightseeingsTips )
                 WITH VALUE #(
                   ( %tky = ls_travel-%tky
                     SightseeingTips = lv_tips )
@@ -303,16 +303,16 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
 
         READ ENTITIES OF ZR_TRAVEL### IN LOCAL MODE
           ENTITY Travel
-            FIELDS ( Destination SightseeingTips )
+            FIELDS ( Destination SightseeingsTips )
             WITH CORRESPONDING #( keys )
           RESULT DATA(lt_travels).
 
         LOOP AT lt_travels INTO DATA(ls_travel).
-          IF ls_travel-SightseeingTips IS INITIAL.
+          IF ls_travel-SightseeingsTips IS INITIAL.
             DATA(lv_tips) = lo_travel_helper->get_sightseeing_tips( ls_travel-Destination ).
             MODIFY ENTITIES OF ZR_TRAVEL### IN LOCAL MODE
               ENTITY Travel
-                UPDATE FIELDS ( SightseeingTips )
+                UPDATE FIELDS ( SightseeingsTips )
                 WITH VALUE #(
                   ( %tky = ls_travel-%tky
                     SightseeingTips = lv_tips )
