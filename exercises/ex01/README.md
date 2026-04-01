@@ -473,7 +473,7 @@ First, you'll create an ABAP package, a database table, and an ABAP class to pop
          EndDate;
       ```
 
-   4. In ![behaviordefinition](images/adt_bdefe.png) **`ZR_TRAVEL###`**, add the field **`DiscountedFlightPrice` in *`field ( readonly )`* for **`ZR_BOOKING###`**
+   4. In ![behaviordefinition](images/adt_bdefe.png) **`ZR_TRAVEL###`**, add the field **`DiscountedFlightPrice` in *`field ( readonly )`* for **`ZR_BOOKING###`**(Scroll down)
 
       ```ABAP
          field ( readonly )
