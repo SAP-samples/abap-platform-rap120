@@ -66,14 +66,16 @@ Once you've found an available group ID, choose **Cancel**.
 
 ## Create an _ABAP Cloud Project_ in ADT
 
-> In this step, you will create a connection to the ABAP system in your ADT installation. To do this, you need to create an _**ABAP Cloud Project**_.
->
 > Create an _**ABAP Cloud Project**_ in your ADT installation to connect it to the *SAP BTP ABAP Environment* or *SAP S/4HANA Cloud (public edition)* system.
 >
 > ⚠️ Skip this step if you're working on _SAP S/4HANA system, on-prem or private cloud edition_, including CAL instances. 
 
 > ⚠ **Please note:** ⚠    
 > If you've already created an *ABAP Cloud Project* or an *ABAP Project* in the ABAP Development Tools for Eclipse (ADT), then skip this section.  
+
+> ⚠ **Participants of Sapphire / ASUG108** ⚠    
+> You have received a **handout** with logon information.  
+> Open the provided **System** tiny-URL in your Browser. This redirects you to the launchpad of the related *SAP BTP ABAP Environment* and requires you to logon with the provided **Username** and **Password**. Once the launchpad has loaded, copy the launchpad URL from the Browser and use it in the subsequent step when it says "Give the ABAP Service instances URL".  
 
 
 <details>
