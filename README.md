@@ -84,7 +84,7 @@ This repository contains the material for the hands-on session **RAP120 - Build 
 
   You will build a simple transactional app to manage travel bookings based on a managed business object (BO) with a single node _Travel_.
 
-  ABAP Cloud is the development model for building clean core compliant apps, services, and extensions on SAP S/4HANA Cloud, SAP S/4HANA, and SAP BTP ABAP environment. ABAP Cloud covers different development scenarios such as transactional, analytical, intgeration, and enterprise search scenarios. RAP ist at the heart of ABAP Cloud for building transactional SAP Fiori apps, OData-based Web API, local APIs, and business events.
+  ABAP Cloud is the development model for building clean core compliant apps, services, and extensions on SAP S/4HANA Cloud, SAP S/4HANA, and SAP BTP ABAP environment. ABAP Cloud covers different development scenarios such as transactional, analytical, integration, and enterprise search scenarios. RAP ist at the heart of ABAP Cloud for building transactional SAP Fiori apps, OData-based Web API, local APIs, and business events.
 
   The resulting app will look like this:
 
