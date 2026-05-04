@@ -55,9 +55,10 @@ This repository contains the material for the hands-on session **RAP120 - Build 
 > 
 > (*) SAP BTP ABAP environment and SAP S/4HANA Cloud Public Edition are currently supported.
 >
->> #### ⚠ Exception regarding SAP-led events, such as "ABAP Developer Day" and "SAP CodeJam"   
+>> #### ⚠ Exception regarding SAP-led events, such as "Sapphire / ASUG108", "ABAP Developer Day" and "SAP CodeJam"   
 >> → A dedicated ABAP system for the hands-on workshop participants will be provided.   
->> → Access to the system details for the workshop will be provided by the SAP instructors during the session.
+>> → Access to the system details for the workshop will be provided by the SAP instructors during the session.   
+>> → No need for you to install the ABAP Flight Reference Scenario.
 
 <details>
   <summary>🔵Click to expand!</summary>
