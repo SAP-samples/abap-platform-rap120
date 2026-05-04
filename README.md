@@ -82,7 +82,7 @@ This repository contains the material for the hands-on session **RAP120 - Build 
    
   This hands-on workshop dives into creating and testing a transactional SAP Fiori elements app with Joule, using the ABAP RESTful Application Programming Model (RAP) and its UI services.
 
-  You will build a simple transactional app to manage travel bookings based on a managed business object (BO) with a single node _Travel_.
+  You will build a simple transactional app to manage travel bookings based on a managed business object (BO) with a two nodes: _Travel_ and _Booking_.
 
   ABAP Cloud is the development model for building clean core compliant apps, services, and extensions on SAP S/4HANA Cloud, SAP S/4HANA, and SAP BTP ABAP environment. ABAP Cloud covers different development scenarios such as transactional, analytical, integration, and enterprise search scenarios. RAP ist at the heart of ABAP Cloud for building transactional SAP Fiori apps, OData-based Web API, local APIs, and business events.
 
