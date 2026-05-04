@@ -41,7 +41,6 @@ This repository contains the material for the hands-on session **RAP120 - Build 
 - [Overview](#overview)
 - [Exercises](#exercises)
 - [Recordings](#recordings)
-- [Solution Package](#solution-package)
 - [Known Issues](#known-issues)
 - [How to obtain support](#how-to-obtain-support) 
 - [Further Information](#further-information)
