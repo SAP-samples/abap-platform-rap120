@@ -1,7 +1,7 @@
 [Home - RAP120](../../README.md)
 
 
-# Exercise 1: Play Around with the ABAP Cloud Generator - Transactional App from Scratch💎
+# Exercise 7: Play Around with the ABAP Cloud Generator - Transactional App from Scratch💎
 
 ## Introduction
 
@@ -9,13 +9,13 @@ In this exercise, you can play around with ABAP Cloud Generator - Transactioanal
 
 ### Exercises
 
-- [2.1 - Create another ABAP Package](#exercise-21-create-another-abap-package)
-- [2.2 - Play Around with the ABAP Cloud Generator: Transactional App from Scratch](#exercise-22-play-around-with-the-abap-cloud-generator-transactional-app-from-scratch)
+- [7.1 - Create another ABAP Package](#exercise-71-create-another-abap-package)
+- [7.2 - Play Around with the ABAP Cloud Generator: Transactional App from Scratch](#exercise-72-play-around-with-the-abap-cloud-generator-transactional-app-from-scratch)
 - [Summary & Next Exercise](#summary--next-exercise)  
 
 ### Exercises
 
-## Exercise 2.1: Create another ABAP Package
+## Exercise 7.1: Create another ABAP Package
 [^Top of page](#)
 
 > Create a new exercise package ![package](../images/adt_package.png)**`ZRAP120_RAP_GEN_###`**, where **`###`** with your suffix.   
@@ -42,7 +42,7 @@ In this exercise, you can play around with ABAP Cloud Generator - Transactioanal
 </details>
 
 
-## Exercise 2.2: Play Around with the ABAP Cloud Generator: Transactional App from Scratch💎
+## Exercise 7.2: Play Around with the ABAP Cloud Generator: Transactional App from Scratch💎
 [^Top of page](#)
 
 > Generate read-only and transactional an OData-based UI service.
