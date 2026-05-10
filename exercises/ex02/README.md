@@ -102,9 +102,8 @@ In this exercise, you'll now enhance the base BO data model by adding a calculat
 <details>
    <summary>🔵 Click to expand!</summary>
 
-   1. Select the previous added **CASE** logic for **`DiscountedFlightPrice`** field and perform right-click, **Joule > Explain**
-
-   ![](/exercises/ex02/images/rap120_ex22.gif)
+   1. Right-click on your CDS data definition ![data definition](images/adt_ddls.png)**`ZR_BOOKING###`** and choose **Joule > Explain**.
+   2. The explain capability analyzes the CDS view and provides an explanation of it.
 
 </details>
 
