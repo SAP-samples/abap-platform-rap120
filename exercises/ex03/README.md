@@ -6,7 +6,7 @@
 
 In the previous exercise, you've enhanced the CDS data definition ![datadefinition](images/adt_ddls.png)**`ZR_BOOKING###`** with a simply logic and generated its unit tests using **ABAP Unit Test Generation Capability**💎 (_see [Exercise 2](../ex02/README.md)_).
 
-In this exercise, you will now analyze the ABAP helper class ![class](images/adt_class.png)**`ZCL_TRAVEL_HELPER_###`** created in [Exercise 1.7](../ex01/README.md/#exercise-16-publish-and-preview-the-travel-app) and create ABAP unit tests for it using **ABAP Unit Test Generation Capability**💎.
+In this exercise, you will now analyze the ABAP helper class ![class](images/adt_class.png)**`ZCL_TRAVEL_HELPER_###`** created in [Exercise 1.6](../ex01/README.md/#exercise-16-publish-and-preview-the-travel-app) and create ABAP unit tests for it using **ABAP Unit Test Generation Capability**💎.
  
 ### Exercises
 - [3.1 - Define the ABAP unit test class](#exercise-31-define-the-abap-unit-test-class)
