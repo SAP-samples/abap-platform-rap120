@@ -61,11 +61,13 @@ In this exercise, you will now analyze the ABAP helper class ![class](images/adt
 
    3. Now, from Joule copilot, select the option **Generate Test Double for Database Table /dmo/customer**
 
-   4. Then, click on **Generate in ltc_travel_helper_###**
+   4. Then, click on **Generate in ltc_travel_helper_###**   
+
+      ⚠ **Please note** ⚠ In case Joule responds with `Currently there are no test classes for ...` please **continue with Exercise 3.3, step 6** and copy the test class code from there.
    
-   5. Review the generated code in Joule copilot and press **Copy**. 
+   6. Review the generated code in Joule copilot and press **Copy**. 
  
-   6. Switch to the **Test Classes** tab and replace the current source code with the one copied from the Joule view.
+   7. Switch to the **Test Classes** tab and replace the current source code with the one copied from the Joule view.
 
   ![](/exercises/ex03/images/rap120_ex32.gif)
 
