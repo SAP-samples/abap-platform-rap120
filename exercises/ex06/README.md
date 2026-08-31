@@ -171,9 +171,9 @@ In this exercise, you will learn how to use the ABAP AI SDK powered by Intellige
  
   4. Save![save icon](images/adt_save.png) and activate![activate icon](images/adt_activate.png) the changes in ![class icon](images/adt_class.png)**`ZBP_R_TRAVEL###`**. 
 
-  5. Let's implement the determination **`setSightseeingTips`** using **Predict RAP Business Logic 💎**. In your implementaion class ![class](images/adt_class.png)**`ZBP_R_TRAVEL###`** , position the cursor on **`setSightseeingTips`** method implementation.
+  5. Let's implement the determination **`setSightseeingTips`** using **Predict RAP Business Logic 💎**. In your implementaion class ![class](images/adt_class.png)**`ZBP_R_TRAVEL###`** , position the cursor on **`setSightseeingTips`** method implementation and use ADT Quick Fix (Ctrl or Cmd +1) to open **Predict RAP Business Logic 💎**.
 
-  6. Enter the following the description in the **Method Description** section. Then, press **Run**.
+  6. Joule panel opens on the right side of ADT, enter the following the description in the Joule input field there. Then, press **Run**. Joule generates the code and inserts it into the method.
    
    Don't forget to replace the suffix placeholder **`###`** with your chosen or assigned group ID/suffix.
    
