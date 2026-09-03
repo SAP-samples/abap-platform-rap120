@@ -115,8 +115,7 @@ First, you'll create an ABAP package, a database table, and an ABAP class to pop
    7. ⚠️⚠️⚠️ Before continuing and generating the RAP business object, please make sure that you have added the fields  **`Destination`**, **`DiscountedFlightPrice`** and **`SightseeingsTips`** to your data model. 
       If you have not added the fields, please go back to **Step 4** before continuing with the generation of the RAP BO.
 
-   8. Click on **Next >**. A preview of the generated objects will appear. Click on **Next >** again, select the transport request, and then click on **Finish**.
-  
+   8. Click on **Next >**. A preview of the generated objects will appear. Click on **Next >** again, you do not need to select a transport request, click on **Finish**.
    9. Go to the _**Project Explorer**_ view and check all object that have been generated in your package. Press **F5** to refresh your package if needed.
 
    ![](/exercises/ex01/images/rap120_ex12.gif)
@@ -604,7 +603,7 @@ First, you'll create an ABAP package, a database table, and an ABAP class to pop
  <details>
   <summary>🔵Click to expand!</summary>
 
-   1. Go to your service binding ![service binding](images/adt_srvb.png)**`ZUI_TRAVEL_O4###`** and click **Publish** to publish its local service endpoint to view service URL, entity sets, and associations. 
+   1.  Navigate to **`Business Services`** , open the service binding ![service binding](images/adt_srvb.png)**`ZUI_TRAVEL_O4###`** and click **Publish** to publish its local service endpoint to view service URL, entity sets, and associations.
    
    2. Once it is published, select the entity ![ ](images/adt_ddls_lead_entity.png)**`Travel`** (aka _leading entity_) in the **Entity Set and Association** and click on **Preview**.
      
