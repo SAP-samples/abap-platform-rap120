@@ -203,6 +203,10 @@ In this exercise, you will now define and implement a determination called **`ca
             RESULT DATA(lt_travel).
 
           LOOP AT lt_travel INTO DATA(ls_travel).
+            APPEND VALUE #(
+              %tky        = ls_travel-%tky
+              %state_area = 'Validation' ) to reported-Travel.
+
             IF ls_travel-CustomerID IS INITIAL OR
               lo_travel_helper->validate_customer( ls_travel-CustomerID ) = abap_false.
               APPEND VALUE #( %tky = ls_travel-%tky ) TO failed-Travel.
